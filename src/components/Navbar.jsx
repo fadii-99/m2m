@@ -12,7 +12,7 @@ import {
 } from './Icons'
 
 /**
- * Features dropdown items — intentionally empty for now.
+ * Features dropdown items  intentionally empty for now.
  * The Messaging / Calling / Status / … pages get built in the next step;
  * add them here as `{ label, href, Icon, desc }` and the dropdown panel
  * starts rendering on its own.
@@ -82,15 +82,10 @@ export default function Navbar() {
             </div>
 
             {NAV.map(({ label, href, external }) => (
-              <a
-                key={label}
-                className="nav__link"
-                href={href}
-                {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-              >
+              <SmartLink key={label} className="nav__link" href={href}>
                 {label}
                 {external && <IconArrowUpRight width="13" height="13" />}
-              </a>
+              </SmartLink>
             ))}
           </nav>
 
@@ -98,9 +93,9 @@ export default function Navbar() {
             <a className="btn btn--ghost" href={LINKS.login} target="_blank" rel="noreferrer">
               Log in <IconArrowUpRight width="14" height="14" className="btn__icon" />
             </a>
-            <a className="btn" href={LINKS.download}>
+            <SmartLink className="btn" href={LINKS.download}>
               Download <IconDownload width="15" height="15" className="btn__icon" />
-            </a>
+            </SmartLink>
             <button
               className="nav__toggle"
               onClick={() => setOpen((v) => !v)}
@@ -124,20 +119,15 @@ export default function Navbar() {
           </SmartLink>
         ))}
         {NAV.map(({ label, href, external }) => (
-          <a
-            key={label}
-            href={href}
-            onClick={() => setOpen(false)}
-            {...(external ? { target: '_blank', rel: 'noreferrer' } : {})}
-          >
+          <SmartLink key={label} href={href} onClick={() => setOpen(false)}>
             {label}
             {external && <IconArrowUpRight width="16" height="16" />}
-          </a>
+          </SmartLink>
         ))}
         <div className="drawer__cta">
-          <a className="btn btn--lg" href={LINKS.download} onClick={() => setOpen(false)}>
+          <SmartLink className="btn btn--lg" href={LINKS.download} onClick={() => setOpen(false)}>
             Download M2M <IconDownload width="16" height="16" className="btn__icon" />
-          </a>
+          </SmartLink>
           <a className="btn btn--ghost btn--lg" href={LINKS.login} target="_blank" rel="noreferrer">
             Log in to M2M Web
           </a>

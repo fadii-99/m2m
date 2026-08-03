@@ -16,7 +16,7 @@ function pick(seed) {
 }
 
 /**
- * Gradient placeholder avatar with initials — stands in for a real photo.
+ * Gradient placeholder avatar with initials  stands in for a real photo.
  */
 export default function Avatar({ name = 'M', size = 28, className = '', ring = false }) {
   const [from, to] = pick(name)

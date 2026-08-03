@@ -13,7 +13,7 @@ export default function MoreFeatures({
       M2M features
     </>
   ),
-  body = 'Learn more about what else you can do on M2M — from private calls to secure group chats and everyday updates with Status.',
+  body = 'Learn more about what else you can do on M2M  from private calls to secure group chats and everyday updates with Status.',
   items = [],
 }) {
   return (

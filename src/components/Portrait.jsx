@@ -14,7 +14,7 @@ const CLOTH = ['#2f2836', '#4a3a52', '#5f4b5c', '#39434f', '#4f3843', '#2a333d']
 const HAIR = ['#241a20', '#3b2a21', '#15121a', '#4a3326', '#2a2030']
 
 /**
- * Stand-in for a participant's camera feed — a person on a softly lit
+ * Stand-in for a participant's camera feed  a person on a softly lit
  * background. Deterministic per `seed` so tiles stay stable between renders.
  */
 export default function Portrait({
@@ -23,7 +23,7 @@ export default function Portrait({
   style,
   children,
   dark = false,
-  /** Figure scale relative to the tile's smaller side — bump it for close-ups. */
+  /** Figure scale relative to the tile's smaller side  bump it for close-ups. */
   size,
 }) {
   const i = Math.abs(Math.round(seed))

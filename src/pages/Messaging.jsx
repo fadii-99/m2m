@@ -25,7 +25,7 @@ const ORGANIZE_ITEMS = [
   },
   {
     title: 'Pinned messages',
-    body: 'Pin the message everyone keeps scrolling back for — an address, a date, a link — right to the top of the chat.',
+    body: 'Pin the message everyone keeps scrolling back for  an address, a date, a link  right to the top of the chat.',
     ctaLabel: 'Learn how',
     href: LINKS.helpCenter,
   },
@@ -37,7 +37,7 @@ const ORGANIZE_ITEMS = [
   },
   {
     title: 'Message translations',
-    body: 'Translate an incoming message into your language without leaving the chat — the translation happens on your device.',
+    body: 'Translate an incoming message into your language without leaving the chat  the translation happens on your device.',
     ctaLabel: 'Learn how',
     href: LINKS.helpCenter,
   },
@@ -50,7 +50,7 @@ const EXPRESS_ITEMS = [
   },
   {
     title: 'Reactions',
-    body: 'Answer without adding another message — press and hold to drop a reaction on anything in the chat.',
+    body: 'Answer without adding another message  press and hold to drop a reaction on anything in the chat.',
   },
   {
     title: 'Voice notes',
@@ -120,7 +120,7 @@ const FAQS = [
   },
   {
     q: 'How do I send large files?',
-    a: 'Tap the attachment icon and choose Document. M2M supports files up to 2 GB — the file is encrypted before it leaves your device.',
+    a: 'Tap the attachment icon and choose Document. M2M supports files up to 2 GB  the file is encrypted before it leaves your device.',
   },
   {
     q: 'How do I send voice notes?',
@@ -237,7 +237,7 @@ export default function Messaging() {
             <h2 className="h2">Express yourself in your chats</h2>
             <p>
               For when you need more than just words, lean on M2M's variety of features to
-              express yourself — stickers, GIFs, reactions, voice notes and more.
+              express yourself  stickers, GIFs, reactions, voice notes and more.
             </p>
           </Reveal>
 

@@ -13,7 +13,7 @@ function useTicker(start = 128) {
   return `${mm}:${ss}`
 }
 
-/** Video call screen — used by the "voice and video calls" section. */
+/** Video call screen  used by the "voice and video calls" section. */
 export default function CallMockup() {
   const timer = useTicker()
 

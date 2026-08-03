@@ -1,9 +1,8 @@
 import Logo from './Logo'
 import SmartLink from './SmartLink'
-import { LANGUAGES, LINKS } from '../config/links'
+import StoreBadges from './StoreBadges'
+import { LINKS } from '../config/links'
 import {
-  IconChevronDown,
-  IconDownload,
   IconFacebook,
   IconInstagram,
   IconTiktok,
@@ -11,42 +10,29 @@ import {
   IconYoutube,
 } from './Icons'
 
+/**
+ * "What we do" mirrors the Features dropdown in the navbar  keep the two in
+ * sync when a feature page lands (see FEATURES in Navbar.jsx).
+ */
 const COLUMNS = [
   {
     title: 'What we do',
     links: [
-      { label: 'Features', href: LINKS.features },
-      { label: 'Blog', href: LINKS.blog },
-      { label: 'Security', href: LINKS.security },
-      { label: 'For Business', href: LINKS.forBusiness },
+      { label: 'Messaging', href: LINKS.messaging },
+      { label: 'Voice & video calls', href: LINKS.calling },
+      { label: 'Status', href: LINKS.status },
     ],
   },
   {
     title: 'Who we are',
     links: [
       { label: 'About us', href: LINKS.about },
-      { label: 'Careers', href: LINKS.careers },
-      { label: 'Brand Center', href: LINKS.brand },
       { label: 'Privacy', href: LINKS.privacy },
     ],
   },
   {
-    title: 'Use M2M',
-    links: [
-      { label: 'Android', href: LINKS.android },
-      { label: 'iPhone', href: LINKS.ios },
-      { label: 'Mac/PC', href: LINKS.mac },
-      { label: 'M2M Web', href: LINKS.web },
-    ],
-  },
-  {
     title: 'Need help?',
-    links: [
-      { label: 'Contact Us', href: LINKS.contact },
-      { label: 'Help Center', href: LINKS.helpCenter },
-      { label: 'Apps', href: LINKS.download },
-      { label: 'Security Advisories', href: LINKS.advisories },
-    ],
+    links: [{ label: 'Contact Us', href: LINKS.contact }],
   },
 ]
 
@@ -73,11 +59,9 @@ export default function Footer() {
                 color: 'rgba(255,255,255,.7)',
               }}
             >
-              Private messaging, voice and video calls for everyone — everywhere.
+              Private messaging, voice and video calls for everyone  everywhere.
             </p>
-            <a className="btn" href={LINKS.download} style={{ marginTop: 20 }}>
-              Download <IconDownload width="15" height="15" className="btn__icon" />
-            </a>
+            <StoreBadges variant="outline" className="footer__stores" />
           </div>
 
           {COLUMNS.map((col) => (
@@ -97,8 +81,7 @@ export default function Footer() {
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} M2M</span>
           <span className="footer__legal">
-            <a href={LINKS.terms}>Terms &amp; Privacy Policy</a>
-            <a href={LINKS.sitemap}>Sitemap</a>
+            <SmartLink href={LINKS.privacy}>Terms &amp; Privacy Policy</SmartLink>
           </span>
 
           <div className="socials">
@@ -107,15 +90,6 @@ export default function Footer() {
                 <Icon />
               </a>
             ))}
-          </div>
-
-          <div className="lang">
-            <select defaultValue="English" aria-label="Language">
-              {LANGUAGES.map((l) => (
-                <option key={l}>{l}</option>
-              ))}
-            </select>
-            <IconChevronDown width="14" height="14" />
           </div>
         </div>
       </div>

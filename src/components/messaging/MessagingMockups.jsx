@@ -21,7 +21,7 @@ import {
 } from '../Icons'
 
 /* ==========================================================================
-   1. hero — expressive chat
+   1. hero  expressive chat
    ========================================================================== */
 export function HeroChatPhone() {
   return (

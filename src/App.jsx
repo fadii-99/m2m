@@ -9,6 +9,10 @@ import Home from './pages/Home'
 import Calling from './pages/Calling'
 import Messaging from './pages/Messaging'
 import Status from './pages/Status'
+import About from './pages/About'
+import Privacy from './pages/Privacy'
+import Contact from './pages/Contact'
+import Download from './pages/Download'
 
 /** Jump to the top whenever the route changes (but keep #anchor jumps). */
 function ScrollToTop() {
@@ -32,6 +36,10 @@ export default function App() {
         <Route path="/calling" element={<Calling />} />
         <Route path="/messaging" element={<Messaging />} />
         <Route path="/status" element={<Status />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/download" element={<Download />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

@@ -58,7 +58,7 @@ export default function EncryptedMockup() {
           <span className="bubble__time">21:04</span>
         </div>
         <div className="bubble bubble--out">
-          Yes — nobody else can read them.
+          Yes  nobody else can read them.
           <span className="bubble__time">
             21:05 <IconCheckDouble width="10" height="10" color="#7fd8ff" />
           </span>

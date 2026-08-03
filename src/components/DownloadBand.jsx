@@ -1,13 +1,7 @@
 import Reveal from './Reveal'
+import StoreBadges from './StoreBadges'
 import { LINKS } from '../config/links'
-import {
-  IconAndroid,
-  IconApple,
-  IconGlobe,
-  IconLock,
-  IconSparkle,
-  IconWindows,
-} from './Icons'
+import { IconGlobe, IconLock, IconSparkle, IconWindows, IconApple } from './Icons'
 
 const PLATFORMS = [
   { label: 'Mac', href: LINKS.mac, Icon: IconApple },
@@ -30,25 +24,10 @@ export default function DownloadBand() {
               </h2>
               <p className="lead">
                 Download M2M on your phone and stay signed in on desktop and the web. Your
-                chats sync instantly — and stay end-to-end encrypted everywhere.
+                chats sync instantly  and stay end-to-end encrypted everywhere.
               </p>
 
-              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 28 }}>
-                <a className="store" href={LINKS.android} target="_blank" rel="noreferrer">
-                  <IconAndroid />
-                  <span>
-                    <small>Get it on</small>
-                    <strong>Google Play</strong>
-                  </span>
-                </a>
-                <a className="store" href={LINKS.ios} target="_blank" rel="noreferrer">
-                  <IconApple />
-                  <span>
-                    <small>Download on the</small>
-                    <strong>App Store</strong>
-                  </span>
-                </a>
-              </div>
+              <StoreBadges className="band__stores" />
 
               <div className="platforms">
                 {PLATFORMS.map(({ label, href, Icon }) => (
@@ -75,7 +54,7 @@ export default function DownloadBand() {
                 {
                   Icon: IconSparkle,
                   title: 'Free to use',
-                  text: 'No subscriptions, no ads — just your data plan.',
+                  text: 'No subscriptions, no ads  just your data plan.',
                 },
               ].map(({ Icon, title, text }, i) => (
                 <Reveal

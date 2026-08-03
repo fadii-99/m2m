@@ -10,7 +10,7 @@ import {
   IconVideo,
 } from '../Icons'
 
-/** Group chat screen — used by the "Keep in touch with your groups" section. */
+/** Group chat screen  used by the "Keep in touch with your groups" section. */
 export default function ChatMockup() {
   return (
     <PhoneFrame size="lg" lightStatus className="float-slow">

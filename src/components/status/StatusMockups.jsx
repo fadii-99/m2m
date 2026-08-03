@@ -33,7 +33,7 @@ function Wave({ bars = 16 }) {
 }
 
 /* ==========================================================================
-   1. hero — a status surrounded by reactions
+   1. hero  a status surrounded by reactions
    ========================================================================== */
 const HERO_EMOJI = [
   { e: '😍', top: '4%', right: '-14%', d: '0s' },
@@ -112,7 +112,7 @@ export function HeroStatusCard() {
 }
 
 /* ==========================================================================
-   2. share your everyday — stickers + voice note + caption
+   2. share your everyday  stickers + voice note + caption
    ========================================================================== */
 export function EverydayStatusCard() {
   return (
@@ -177,7 +177,7 @@ export function EverydayStatusCard() {
 }
 
 /* ==========================================================================
-   3. connect with friends and family — mentions + reactions
+   3. connect with friends and family  mentions + reactions
    ========================================================================== */
 export function MentionStatusCard() {
   return (
@@ -233,7 +233,7 @@ export function MentionStatusCard() {
 }
 
 /* ==========================================================================
-   4. stay in control — audience chooser
+   4. stay in control  audience chooser
    ========================================================================== */
 export function PrivacyStatusCard() {
   return (
@@ -280,7 +280,7 @@ export function PrivacyStatusCard() {
 }
 
 /* ==========================================================================
-   5. carousel art — gallery picker + status editor
+   5. carousel art  gallery picker + status editor
    ========================================================================== */
 export function GalleryArt() {
   return (

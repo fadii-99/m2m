@@ -25,7 +25,7 @@ const DEVICE_ITEMS = [
   },
   {
     title: 'Keep things private',
-    body: 'Every voice and video call on M2M is end-to-end encrypted, so nobody outside the call can listen in — not even M2M.',
+    body: 'Every voice and video call on M2M is end-to-end encrypted, so nobody outside the call can listen in  not even M2M.',
   },
   {
     title: 'Add video effects',
@@ -52,7 +52,7 @@ const GROUP_ITEMS = [
   },
   {
     title: 'Start calls silently',
-    body: 'Ring the group without waking everyone up — people can join whenever they are ready.',
+    body: 'Ring the group without waking everyone up  people can join whenever they are ready.',
   },
 ]
 
@@ -75,7 +75,7 @@ const DISCOVER = [
 const FAQS = [
   {
     q: 'How do I make a group voice call on M2M?',
-    a: 'Open the group chat, tap the call icon and choose Voice call. Select the people you want to ring and tap the call button — up to 32 people can join.',
+    a: 'Open the group chat, tap the call icon and choose Voice call. Select the people you want to ring and tap the call button  up to 32 people can join.',
   },
   {
     q: 'How do I make a group video call on M2M?',

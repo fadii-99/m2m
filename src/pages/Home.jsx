@@ -20,7 +20,7 @@ export default function Home() {
         reverse
         title="New! Call on"
         highlight="M2M Web"
-        body="Now you can make and receive video or voice calls — one-on-one or in groups — right from your browser."
+        body="Now you can make and receive video or voice calls  one-on-one or in groups  right from your browser."
         linkLabel="Try it"
         linkHref={LINKS.web}
         media={<WebMockup />}
@@ -43,7 +43,7 @@ export default function Home() {
         reverse
         title="Speak"
         highlight="freely"
-        body="With end-to-end encryption on M2M, your personal messages and calls are secured with a lock. Only you and the person you're talking to can read or listen to them, and no one else — not even M2M."
+        body="With end-to-end encryption on M2M, your personal messages and calls are secured with a lock. Only you and the person you're talking to can read or listen to them, and no one else  not even M2M."
         linkHref={LINKS.security}
         media={<EncryptedMockup />}
       />

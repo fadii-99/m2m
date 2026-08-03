@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { IconChevronLeft, IconChevronRight } from './Icons'
 
 /**
- * Horizontal scroll-snap rail with prev/next buttons — used by
+ * Horizontal scroll-snap rail with prev/next buttons  used by
  * "Keep the conversation going" and "Discover more M2M features".
  */
 export default function Carousel({ children, ariaLabel = 'Carousel' }) {

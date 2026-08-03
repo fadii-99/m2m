@@ -1,6 +1,23 @@
+import { useLocation } from 'react-router-dom'
+import SmartLink from './SmartLink'
+import { LINKS } from '../config/links'
+
 export default function Logo({ invert = false, showWord = true }) {
+  const { pathname } = useLocation()
+
+  // Navigating to "/" from another page already scrolls to the top (see
+  // ScrollToTop in App.jsx); when we are already home, do it here instead.
+  const onClick = () => {
+    if (pathname === LINKS.home) window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
-    <a href="#top" className={`logo${invert ? ' logo--invert' : ''}`} aria-label="M2M home">
+    <SmartLink
+      href={LINKS.home}
+      onClick={onClick}
+      className={`logo${invert ? ' logo--invert' : ''}`}
+      aria-label="M2M home"
+    >
       <svg className="logo__mark" viewBox="0 0 512 512" aria-hidden="true">
         <defs>
           <linearGradient id="m2m-mark" x1="0" y1="0" x2="1" y2="1">
@@ -19,6 +36,6 @@ export default function Logo({ invert = false, showWord = true }) {
         />
       </svg>
       {showWord && <span>M2M</span>}
-    </a>
+    </SmartLink>
   )
 }

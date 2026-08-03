@@ -1,4 +1,4 @@
-/* Minimal inline icon set — no external icon dependency. */
+/* Minimal inline icon set  no external icon dependency. */
 
 const base = {
   width: 18,
@@ -20,6 +20,27 @@ export const IconChevronDown = (p) => (
 export const IconChevronRight = (p) => (
   <svg {...base} {...p}>
     <path d="m9 6 6 6-6 6" />
+  </svg>
+)
+
+export const IconMail = (p) => (
+  <svg {...base} {...p}>
+    <rect x="2.5" y="5" width="19" height="14" rx="2.5" />
+    <path d="m3.5 7 8.5 6 8.5-6" />
+  </svg>
+)
+
+export const IconHelp = (p) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M9.6 9.4A2.5 2.5 0 0 1 14.5 10c0 1.7-2.5 2-2.5 3.6" />
+    <circle cx="12" cy="17" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+)
+
+export const IconCheck = (p) => (
+  <svg {...base} strokeWidth="2.2" {...p}>
+    <path d="m4.5 12.5 5 5 10-11" />
   </svg>
 )
 
@@ -314,6 +335,19 @@ export const IconSparkle = (p) => (
 export const IconApple = (p) => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" {...p}>
     <path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.6-1.1-1.7-2.9-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.2-.8-1.7 0-3.2 1-4 2.5-1.7 2.9-.4 7.3 1.2 9.7.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.1-.8s1.9.8 3.2.7c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.4-1-2.3-3.9ZM14.3 5.3c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4Z" />
+  </svg>
+)
+
+/** The Google Play mark — four-colour triangle, as used on the real badge. */
+export const IconGooglePlay = (p) => (
+  <svg viewBox="0 0 24 24" width="22" height="22" {...p}>
+    <path
+      fill="#00C3FF"
+      d="M3.6 2.1c-.34.35-.53.9-.53 1.6v16.6c0 .7.19 1.25.53 1.6l.06.05 9.3-9.3v-.22l-9.3-9.3-.06.06z"
+    />
+    <path fill="#FFCE00" d="m16.55 15.72-3.09-3.09v-.22l3.1-3.09.07.04 3.66 2.08c1.05.6 1.05 1.57 0 2.16l-3.66 2.08-.08.04z" />
+    <path fill="#FF3A44" d="M16.63 15.68 13.46 12.5 3.6 22.36c.35.36.92.41 1.56.05l11.47-6.73z" />
+    <path fill="#00D26A" d="M16.63 9.32 5.16 2.59c-.64-.36-1.21-.31-1.56.05l9.86 9.86 3.17-3.18z" />
   </svg>
 )
 

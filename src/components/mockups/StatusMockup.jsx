@@ -2,7 +2,7 @@ import PhoneFrame from './PhoneFrame'
 import Avatar from '../Avatar'
 import { IconCamera, IconMic, IconMore, IconSend } from '../Icons'
 
-/** Status / stories screen — used by the "Say what you feel" section. */
+/** Status / stories screen  used by the "Say what you feel" section. */
 export default function StatusMockup() {
   return (
     <PhoneFrame lightStatus className="float-slow">

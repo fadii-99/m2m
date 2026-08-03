@@ -1,0 +1,157 @@
+/* ==========================================================================
+   Download / Apps page
+   ========================================================================== */
+
+.dl-hero {
+  background: var(--purple-200);
+  padding-top: calc(var(--nav-h) + clamp(30px, 5vw, 66px));
+  padding-bottom: clamp(46px, 6vw, 84px);
+}
+
+.dl-hero__terms {
+  margin-top: 14px;
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.dl-hero__terms a {
+  color: var(--purple-800);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* the "your device" card */
+.devcard {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: clamp(22px, 3vw, 32px);
+  margin-top: 30px;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+}
+
+.devcard__kind {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.devcard__name {
+  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  letter-spacing: -0.03em;
+  margin-top: 2px;
+}
+
+.devcard__body {
+  margin-top: 12px;
+  font-size: 14.5px;
+  color: var(--text-muted);
+}
+
+.devcard__req {
+  margin-top: 12px;
+  font-size: 11.5px;
+  color: var(--text-muted);
+}
+
+.devcard__cta {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* ==========================================================================
+   HERO ILLUSTRATION
+   ========================================================================== */
+.dl-art {
+  width: 100%;
+  max-width: 470px;
+  margin-inline: auto;
+}
+
+.dl-art__float {
+  animation: floatY 6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.dl-art__float--b {
+  animation-duration: 7.5s;
+  animation-delay: -1.6s;
+}
+
+.dl-art__float--c {
+  animation-duration: 5.5s;
+  animation-delay: -0.8s;
+}
+
+/* the ticks draw themselves in, then stay put */
+.dl-art__draw {
+  stroke-dasharray: 70;
+  stroke-dashoffset: 70;
+  animation: dlDraw 3.6s var(--ease) infinite;
+}
+
+@keyframes dlDraw {
+  0% {
+    stroke-dashoffset: 70;
+  }
+  30%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* ==========================================================================
+   OTHER DOWNLOAD OPTIONS
+   ========================================================================== */
+.dcard--device {
+  width: 330px;
+  background: #fff;
+  border: 1px solid rgba(44, 4, 48, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 26px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease),
+    border-color 0.3s var(--ease);
+}
+
+.dcard--device:hover {
+  transform: translateY(-5px);
+  border-color: rgba(155, 16, 163, 0.28);
+  box-shadow: var(--shadow);
+}
+
+.badge-new {
+  align-self: flex-start;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--purple-800);
+  background: var(--purple-200);
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.dcard--device .devcard__body {
+  flex: 1;
+}
+
+.dcard--device .devcard__cta {
+  margin-top: 18px;
+}
+
+/* Microsoft-store style badge reuses .store */
+.store--ms strong {
+  font-size: 14px;
+}
+
+@media (max-width: 560px) {
+  .dcard--device {
+    width: 270px;
+  }
+}

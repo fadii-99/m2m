@@ -4,15 +4,15 @@ import { IconChevronRight, IconSearch } from '../Icons'
 const CATEGORIES = ['All', 'Grocery', 'Bakery', 'Fresh', 'Offers']
 
 const PRODUCTS = [
-  { emoji: '🥑', name: 'Avocado — 500g', price: 'Rs 480', tag: 'Add' },
+  { emoji: '🥑', name: 'Avocado  500g', price: 'Rs 480', tag: 'Add' },
   { emoji: '🍯', name: 'Raw Honey Jar', price: 'Rs 1,250', tag: 'Add' },
   { emoji: '🧁', name: 'Vanilla Cupcakes', price: 'Rs 690', tag: 'Add' },
   { emoji: '☕', name: 'Arabica Beans 1kg', price: 'Rs 2,100', tag: 'Add' },
-  { emoji: '🫒', name: 'Olive Oil — 750ml', price: 'Rs 1,890', tag: 'Add' },
+  { emoji: '🫒', name: 'Olive Oil  750ml', price: 'Rs 1,890', tag: 'Add' },
   { emoji: '🧀', name: 'Aged Cheddar Block', price: 'Rs 1,450', tag: 'Add' },
 ]
 
-/** Business catalog screen — used by the "Transform your business" section. */
+/** Business catalog screen  used by the "Transform your business" section. */
 export default function BusinessMockup() {
   return (
     <PhoneFrame size="lg" lightStatus className="float-slow">

@@ -39,7 +39,7 @@ const MOMENT_CARDS = [
   },
   {
     title: 'Keep it for 24 hours',
-    text: 'Every status disappears from view after a day — unless you save it to your own updates.',
+    text: 'Every status disappears from view after a day  unless you save it to your own updates.',
     art: <GalleryArt />,
   },
 ]

@@ -2,8 +2,8 @@ import { useState } from 'react'
 import { IconChevronRight } from './Icons'
 
 /**
- * `variant="list"`  — plain rows separated by rules (calling / messaging pages)
- * `variant="cards"` — rounded cards with a round arrow button (status page)
+ * `variant="list"`   plain rows separated by rules (calling / messaging pages)
+ * `variant="cards"`  rounded cards with a round arrow button (status page)
  */
 export default function Faq({ items, variant = 'list' }) {
   const [open, setOpen] = useState(-1)

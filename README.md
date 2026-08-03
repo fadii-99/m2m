@@ -1,6 +1,6 @@
-# M2M — public website
+# M2M  public website
 
-React (Vite) frontend for the M2M public/marketing page. Frontend only — no API
+React (Vite) frontend for the M2M public/marketing page. Frontend only  no API
 calls, no backend.
 
 ## Run
@@ -22,7 +22,10 @@ Routing is `react-router-dom` (`src/App.jsx`).
 | `/calling` | `src/pages/Calling.jsx` | done |
 | `/messaging` | `src/pages/Messaging.jsx` | done |
 | `/status` | `src/pages/Status.jsx` | done |
-| `/groups`, `/business`, `/privacy`, … | — | not built yet |
+| `/about` | `src/pages/About.jsx` | done |
+| `/privacy` | `src/pages/Privacy.jsx` | done  **placeholder legal copy, needs review** |
+| `/contact` | `src/pages/Contact.jsx` | done |
+| `/groups`, `/business`, … |  | not built yet |
 
 Unknown routes redirect to `/`. When a new page lands, add its path to the
 `INTERNAL` set in `src/config/links.js` so links to it become client-side
@@ -43,16 +46,17 @@ Unknown routes redirect to `/`. When a new page lands, add its path to the
 | `src/styles/calling.css` | Calling-page pieces: portraits, call screens, accordion, carousel, FAQ |
 | `src/styles/messaging.css` | Messaging-page pieces: chat list, sticker tray, share cards |
 | `src/styles/status.css` | Status-page pieces: story cards, avatar cloud, FAQ card variant |
+| `src/styles/pages.css` | About / Privacy / Contact: value cards, prose, TOC, contact form |
 | `src/components/` | Shared widgets (`Accordion`, `Carousel`, `Faq`, `Portrait`, `SmartLink`, …) |
 | `src/components/sections/` | Blocks reused across pages (`KeepGoing`, `MoreFeatures`) |
-| `src/components/mockups/` | Home-page screens (pure CSS/SVG — no image assets) |
+| `src/components/mockups/` | Home-page screens (pure CSS/SVG  no image assets) |
 | `src/components/calling/` | Calling-page screens |
 | `src/components/messaging/` | Messaging-page screens |
 | `src/components/status/` | Status-page story cards |
 
 ## Replacing the store URLs
 
-Only one file needs editing — `src/config/links.js`:
+Only one file needs editing  `src/config/links.js`:
 
 ```js
 android: 'https://example.com/m2m/android',   // → Play Store URL
@@ -72,6 +76,14 @@ Taken from the Flutter app's `AppColors` (`mobile/lib/utils/constants.dart`):
 | `--purple-500` | `#D500F9` | `floatingButtonColor` |
 | `--purple-200` | `#F3E5F5` | `outgoingMessageColor` |
 | `--purple-100` | `#EEE5EE` | `chatBackgroundColor` |
+
+## Before going live
+
+- `src/pages/Privacy.jsx` contains **placeholder legal copy** describing how the
+  app is designed. It is not a reviewed privacy policy or terms of service 
+  have a lawyer rewrite it and update `LAST_UPDATED` at the top of the file.
+- The contact form has no backend; it opens the visitor's mail client via
+  `mailto:`. Support addresses are dummies in `src/config/links.js`.
 
 ## Notes
 

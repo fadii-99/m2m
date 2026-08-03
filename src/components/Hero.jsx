@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import Reveal from './Reveal'
 import Avatar from './Avatar'
+import SmartLink from './SmartLink'
 import { LINKS } from '../config/links'
 import { IconCheckDouble, IconDownload, IconVideo } from './Icons'
 
@@ -50,9 +51,9 @@ export default function Hero() {
               the world.
             </p>
             <div className="hero__cta">
-              <a className="btn btn--light btn--lg" href={LINKS.download}>
+              <SmartLink className="btn btn--light btn--lg" href={LINKS.download}>
                 Download <IconDownload width="17" height="17" className="btn__icon" />
-              </a>
+              </SmartLink>
               <a
                 className="btn btn--glass btn--lg"
                 href={LINKS.web}
