@@ -1,0 +1,64 @@
+/**
+ * All outbound URLs live here.
+ * Replace the dummy values below with the real store / product URLs later.
+ */
+export const LINKS = {
+  // --- App stores (DUMMY — replace when the apps are published) ---
+  android: 'https://example.com/m2m/android',
+  ios: 'https://example.com/m2m/ios',
+  mac: 'https://example.com/m2m/mac',
+  windows: 'https://example.com/m2m/windows',
+  web: 'https://web.msg2msg.com',
+
+  // --- Internal routes (React Router) ---
+  home: '/',
+  calling: '/calling',
+  messaging: '/messaging',
+  status: '/status',
+  groups: '/groups',
+  business: '/business',
+  privacy: '/privacy',
+  security: '/security',
+
+  // --- Product pages ---
+  download: '#download',
+  login: 'https://web.msg2msg.com',
+  features: '#features',
+  blog: 'https://example.com/m2m/blog',
+  helpCenter: 'https://example.com/m2m/help',
+  faqs: 'https://example.com/m2m/help/faqs',
+  forBusiness: 'https://example.com/m2m/business',
+  contact: 'https://example.com/m2m/contact',
+  careers: 'https://example.com/m2m/careers',
+  about: 'https://example.com/m2m/about',
+  brand: 'https://example.com/m2m/brand-center',
+  terms: 'https://example.com/m2m/terms',
+  sitemap: 'https://example.com/m2m/sitemap',
+  advisories: 'https://example.com/m2m/security-advisories',
+
+  // --- Social ---
+  x: 'https://example.com/m2m/x',
+  youtube: 'https://example.com/m2m/youtube',
+  instagram: 'https://example.com/m2m/instagram',
+  facebook: 'https://example.com/m2m/facebook',
+  tiktok: 'https://example.com/m2m/tiktok',
+}
+
+/**
+ * Routes that are actually built (rendered with <Link> instead of <a>).
+ * Add each new page here as it lands — /messaging, /status, /groups, …
+ */
+export const INTERNAL = new Set([LINKS.home, LINKS.calling, LINKS.messaging, LINKS.status])
+
+export const LANGUAGES = [
+  'English',
+  'اردو',
+  'العربية',
+  'Español',
+  'Français',
+  'Deutsch',
+  'Português',
+  'Türkçe',
+  'हिन्दी',
+  'Bahasa Indonesia',
+]

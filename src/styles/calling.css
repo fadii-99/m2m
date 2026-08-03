@@ -1,0 +1,751 @@
+/* ==========================================================================
+   Calling page
+   ========================================================================== */
+
+/* ---------- participant photo stand-in ---------- */
+.portrait {
+  position: relative;
+  overflow: hidden;
+  container-type: size;
+  background: radial-gradient(90% 75% at 30% 8%, var(--p-bg-a), transparent 62%),
+    linear-gradient(165deg, var(--p-bg-a), var(--p-bg-b) 78%);
+}
+
+/**
+ * The figure lives inside a square anchored to the bottom of the tile and
+ * sized from the tile's *smaller* side (cqmin), so one person reads at the
+ * same scale whether the tile is a wide thumbnail or a tall phone screen.
+ */
+.portrait__person {
+  position: absolute;
+  left: calc(50% + var(--p-shift, 0%));
+  bottom: 0;
+  translate: -50% 0;
+  width: var(--p-size, 116cqmin);
+  height: var(--p-size, 116cqmin);
+}
+
+/* shoulders */
+.portrait__body {
+  position: absolute;
+  left: 50%;
+  bottom: -13%;
+  translate: -50% 0;
+  width: 76%;
+  aspect-ratio: 1.5;
+  border-radius: 46% 46% 0 0 / 74% 74% 0 0;
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--p-cloth) 88%, #fff 12%),
+    var(--p-cloth)
+  );
+}
+
+/* head, with a hair cap on top */
+.portrait__head {
+  position: absolute;
+  left: 50%;
+  bottom: 30%;
+  translate: -50% 0;
+  width: 32%;
+  aspect-ratio: 0.84;
+  border-radius: 50% 50% 46% 46%;
+  background: radial-gradient(
+    62% 58% at 40% 32%,
+    color-mix(in srgb, var(--p-face) 84%, #fff),
+    var(--p-face) 62%,
+    color-mix(in srgb, var(--p-face) 68%, #000)
+  );
+}
+
+.portrait__head::before {
+  content: '';
+  position: absolute;
+  inset: -12% -8% 52%;
+  border-radius: 50% 50% 30% 30%;
+  background: var(--p-hair);
+}
+
+/* lighting + vignette */
+.portrait__veil {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(80% 62% at 24% 8%, rgba(255, 255, 255, 0.2), transparent 58%),
+    linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.45));
+}
+
+.portrait--dark {
+  background: radial-gradient(90% 70% at 32% 6%, var(--p-bg-a), transparent 58%),
+    linear-gradient(165deg, var(--p-bg-b), #100c14 82%);
+}
+
+.portrait--dark .portrait__veil {
+  background: radial-gradient(75% 55% at 30% 6%, rgba(255, 255, 255, 0.12), transparent 60%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.62));
+}
+
+.portrait__tag {
+  position: absolute;
+  left: 6px;
+  bottom: 5px;
+  z-index: 3;
+  font-size: 7.5px;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+/* ==========================================================================
+   IN-PHONE CALL LAYOUTS
+   ========================================================================== */
+.vcall {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #0d0910;
+  overflow: hidden;
+}
+
+.vcall__top {
+  position: absolute;
+  inset: 30px 10px auto;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vcall__chip {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 14, 24, 0.6);
+  backdrop-filter: blur(4px);
+  color: #fff;
+}
+
+.vcall__stage {
+  flex: 1;
+  display: grid;
+  gap: 4px;
+  padding: 4px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 1fr;
+}
+
+.vcall__stage > * {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.vcall__stage--hero {
+  grid-template-rows: 1.45fr 1fr;
+}
+
+.vcall__stage--hero > :nth-child(1) {
+  grid-column: 1 / -1;
+}
+
+.vcall__stage--grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.vcall__self {
+  position: absolute;
+  right: 10px;
+  bottom: 74px;
+  z-index: 6;
+  width: 62px;
+  aspect-ratio: 3 / 4;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 22px -12px rgba(0, 0, 0, 0.9);
+}
+
+.vcall__bar {
+  position: absolute;
+  left: 50%;
+  bottom: 14px;
+  translate: -50% 0;
+  z-index: 7;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: rgba(20, 14, 24, 0.72);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 12px 26px -14px rgba(0, 0, 0, 0.9);
+}
+
+.vcall__btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  transition: background 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.vcall__btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.vcall__btn--on {
+  background: var(--purple-500);
+}
+
+.vcall__btn--end {
+  background: #e5484d;
+  width: 42px;
+  border-radius: 999px;
+}
+
+/* two overlapping phones ("Call easily and privately") */
+.duo {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-block: 10px;
+}
+
+.duo .phone:first-child {
+  --w: 224px;
+  rotate: -6deg;
+  translate: 26px 0;
+  z-index: 1;
+}
+
+.duo .phone:last-child {
+  --w: 224px;
+  rotate: 5deg;
+  translate: -26px 22px;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   LAPTOP + DEVICES
+   ========================================================================== */
+.devices {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0;
+}
+
+.laptop {
+  width: min(100%, 380px);
+  flex: none;
+}
+
+.laptop__lid {
+  border-radius: 12px 12px 3px 3px;
+  padding: 9px 9px 12px;
+  background: linear-gradient(160deg, #3a3340, #16121a);
+  box-shadow: var(--shadow);
+}
+
+.laptop__screen {
+  border-radius: 5px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #0d0910;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.laptop__base {
+  height: 11px;
+  border-radius: 0 0 12px 12px;
+  background: linear-gradient(180deg, #2c2632, #17131c);
+  position: relative;
+  box-shadow: 0 14px 24px -16px rgba(0, 0, 0, 0.9);
+}
+
+.laptop__base::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  translate: -50% 0;
+  width: 74px;
+  height: 4px;
+  border-radius: 0 0 6px 6px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.devices__phone {
+  --w: 116px;
+  margin-left: -34px;
+  margin-bottom: 6px;
+  border-radius: 20px;
+  padding: 5px;
+  z-index: 2;
+  animation: floatY 7s ease-in-out infinite;
+}
+
+.devices__phone .phone__screen {
+  border-radius: 16px;
+}
+
+/* screen-share window */
+.share {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #16121a;
+  padding: 7px;
+  box-shadow: var(--shadow-lg);
+}
+
+.share__inner {
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0d0910;
+}
+
+.share__strip {
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+}
+
+.share__strip > * {
+  width: 40px;
+  aspect-ratio: 4 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  flex: none;
+}
+
+.share__stage {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin: 0 6px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #d9c9b4, #b39a7d);
+}
+
+/* a plain living-room-ish scene so the "shared screen" reads as a screen */
+.room {
+  position: absolute;
+  inset: 0;
+}
+
+.room__wall {
+  position: absolute;
+  inset: 0 0 26% 0;
+  background: linear-gradient(180deg, #efe6da, #ddd0c0);
+}
+
+.room__floor {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 26%;
+  background: linear-gradient(180deg, #c8ab89, #a98a68);
+}
+
+.room__sofa {
+  position: absolute;
+  left: 50%;
+  bottom: 16%;
+  translate: -50% 0;
+  width: 46%;
+  height: 34%;
+  border-radius: 10px 10px 6px 6px;
+  background: linear-gradient(180deg, #8fae86, #5f7f59);
+  box-shadow: 0 8px 14px -8px rgba(0, 0, 0, 0.5);
+}
+
+.room__sofa::before,
+.room__sofa::after {
+  content: '';
+  position: absolute;
+  bottom: 12%;
+  width: 16%;
+  height: 62%;
+  border-radius: 8px;
+  background: #6f9067;
+}
+
+.room__sofa::before {
+  left: -10%;
+}
+.room__sofa::after {
+  right: -10%;
+}
+
+.room__lamp {
+  position: absolute;
+  right: 14%;
+  bottom: 18%;
+  width: 8%;
+  height: 42%;
+  background: linear-gradient(180deg, #f2e2b8 0 26%, #8d7a5e 26%);
+  border-radius: 6px 6px 2px 2px;
+}
+
+.room__art {
+  position: absolute;
+  left: 16%;
+  top: 16%;
+  width: 20%;
+  height: 26%;
+  border-radius: 3px;
+  background: linear-gradient(140deg, #b98fd0, #7b4f96);
+  box-shadow: 0 0 0 3px #efe6da, 0 6px 12px -6px rgba(0, 0, 0, 0.4);
+}
+
+.share__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px;
+}
+
+/* ==========================================================================
+   ACCORDION
+   ========================================================================== */
+.acc {
+  border-top: 1.5px solid rgba(44, 4, 48, 0.16);
+}
+
+.acc__row {
+  border-bottom: 1.5px solid rgba(44, 4, 48, 0.16);
+}
+
+.acc__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 2px;
+  text-align: left;
+  font-size: clamp(1rem, 1.35vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  transition: color 0.2s var(--ease);
+}
+
+.acc__head:hover {
+  color: var(--purple-700);
+}
+
+.acc__icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgba(44, 4, 48, 0.25);
+  transition: transform 0.35s var(--ease), background 0.25s var(--ease),
+    border-color 0.25s var(--ease), color 0.25s var(--ease);
+}
+
+.acc__row.is-open .acc__icon {
+  transform: rotate(45deg);
+  background: var(--purple-700);
+  border-color: var(--purple-700);
+  color: #fff;
+}
+
+.acc__panel {
+  padding: 0 2px 22px;
+  animation: accIn 0.4s var(--ease) both;
+}
+
+.acc__panel p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 52ch;
+  margin-bottom: 16px;
+}
+
+@keyframes accIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ==========================================================================
+   CAROUSEL
+   ========================================================================== */
+.carousel {
+  position: relative;
+  min-width: 0;
+}
+
+.carousel__rail {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+
+.carousel__rail::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__rail > * {
+  scroll-snap-align: start;
+  flex: none;
+}
+
+.carousel__nav {
+  display: flex;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.carousel__nav button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid rgba(44, 4, 48, 0.25);
+  transition: background 0.22s var(--ease), color 0.22s var(--ease),
+    border-color 0.22s var(--ease), opacity 0.22s var(--ease);
+}
+
+.carousel__nav button:hover:not(:disabled) {
+  background: var(--purple-700);
+  border-color: var(--purple-700);
+  color: #fff;
+}
+
+.carousel__nav button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* product card inside the rail */
+.pcard {
+  width: 300px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--purple-700);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+
+.pcard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+
+.pcard__art {
+  height: 176px;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 18px 18px 0;
+  overflow: hidden;
+}
+
+.pcard__body {
+  background: #fff;
+  color: var(--text);
+  padding: 18px 20px 22px;
+  flex: 1;
+}
+
+.pcard__body h3 {
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+}
+
+.pcard__body p {
+  margin-top: 8px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+}
+
+/* discover card (photo on top) */
+.dcard {
+  width: 290px;
+}
+
+.dcard__photo {
+  /* a wider scene rather than a head-and-shoulders close-up */
+  --p-size: 76cqmin;
+  height: 178px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform 0.4s var(--ease);
+}
+
+.dcard:hover .dcard__photo {
+  transform: scale(1.02);
+}
+
+.dcard h3 {
+  margin-top: 16px;
+  font-size: 1.25rem;
+}
+
+.dcard p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   SECTION TINTS
+   ========================================================================== */
+.tint {
+  background: var(--purple-200);
+}
+
+.tint--soft {
+  background: #f7ecfa;
+}
+
+.plain {
+  background: #fff;
+}
+
+/* ==========================================================================
+   FAQ
+   ========================================================================== */
+.faq {
+  border-top: 1px solid rgba(44, 4, 48, 0.12);
+}
+
+.faq__row {
+  border-bottom: 1px solid rgba(44, 4, 48, 0.12);
+}
+
+.faq__head {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 2px;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s var(--ease);
+}
+
+.faq__head:hover {
+  color: var(--purple-700);
+}
+
+.faq__head svg {
+  flex: none;
+  color: var(--purple-700);
+  transition: transform 0.3s var(--ease);
+}
+
+.faq__row.is-open .faq__head svg {
+  transform: rotate(90deg);
+}
+
+.faq__panel {
+  padding: 0 2px 20px 30px;
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 72ch;
+  animation: accIn 0.35s var(--ease) both;
+}
+
+.faq__top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+}
+
+/* ==========================================================================
+   PAGE-SPECIFIC LAYOUT
+   ========================================================================== */
+.page-hero {
+  padding-top: calc(var(--nav-h) + clamp(28px, 5vw, 64px));
+  padding-bottom: clamp(40px, 6vw, 76px);
+}
+
+.page-hero__note {
+  margin-top: 14px;
+  text-align: right;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.split--rail {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .split--rail {
+    grid-template-columns: 1fr;
+  }
+
+  .split--rail .split__media {
+    order: 0;
+  }
+
+  .duo .phone:first-child,
+  .duo .phone:last-child {
+    --w: 190px;
+  }
+
+  .devices {
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  .devices__phone {
+    margin-left: 0;
+    margin-top: -46px;
+    align-self: flex-end;
+    margin-right: 6%;
+  }
+}
+
+@media (max-width: 560px) {
+  .duo .phone:first-child {
+    --w: 158px;
+    translate: 16px 0;
+  }
+
+  .duo .phone:last-child {
+    --w: 158px;
+    translate: -16px 16px;
+  }
+
+  .pcard,
+  .dcard {
+    width: 258px;
+  }
+}

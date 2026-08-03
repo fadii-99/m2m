@@ -1,0 +1,469 @@
+/* ==========================================================================
+   Messaging page
+   ========================================================================== */
+
+/* centered heading that sits above a split block */
+.section-head {
+  text-align: center;
+  max-width: 46rem;
+  margin: 0 auto clamp(32px, 5vw, 58px);
+}
+
+.section-head p {
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: clamp(0.95rem, 1.2vw, 1.0625rem);
+}
+
+/* ==========================================================================
+   CHAT LIST SCREEN
+   ========================================================================== */
+.list-screen {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.list-screen__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 12px 8px;
+}
+
+.list-screen__brand {
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--purple-700);
+}
+
+.list-screen__top-icons {
+  margin-left: auto;
+  display: flex;
+  gap: 11px;
+  color: var(--text);
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  padding: 8px 12px 6px;
+}
+
+.filter {
+  font-size: 8.5px;
+  font-weight: 600;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: var(--purple-50);
+  color: var(--purple-800);
+  white-space: nowrap;
+}
+
+.filter.is-active {
+  background: var(--purple-700);
+  color: #fff;
+}
+
+.list {
+  flex: 1;
+  overflow: hidden;
+  padding: 0 6px;
+}
+
+.list__row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 6px;
+  border-radius: 12px;
+  transition: background 0.2s var(--ease);
+}
+
+.list__row:hover {
+  background: var(--purple-50);
+}
+
+.list__t {
+  flex: 1;
+  min-width: 0;
+}
+
+.list__name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.list__msg {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 9px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.list__meta {
+  text-align: right;
+  flex: none;
+  display: grid;
+  gap: 3px;
+  justify-items: end;
+}
+
+.list__time {
+  font-size: 7.5px;
+  color: var(--text-muted);
+}
+
+.list__badge {
+  background: var(--purple-500);
+  color: #fff;
+  font-size: 7.5px;
+  font-weight: 700;
+  border-radius: 999px;
+  min-width: 14px;
+  height: 14px;
+  display: grid;
+  place-items: center;
+  padding-inline: 4px;
+}
+
+.pin {
+  color: var(--text-muted);
+}
+
+.fab {
+  position: absolute;
+  right: 12px;
+  bottom: 44px;
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--purple-500);
+  color: #fff;
+  box-shadow: 0 10px 20px -10px rgba(213, 0, 249, 0.95);
+  z-index: 3;
+}
+
+.tabbar {
+  flex: none;
+  display: flex;
+  border-top: 1px solid rgba(44, 4, 48, 0.08);
+  padding: 6px 4px 9px;
+}
+
+.tabbar__item {
+  flex: 1;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  font-size: 7px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.tabbar__item.is-active {
+  color: var(--purple-700);
+}
+
+.tabbar__item span:first-child {
+  display: grid;
+  place-items: center;
+  padding: 2px 12px;
+  border-radius: 999px;
+}
+
+.tabbar__item.is-active span:first-child {
+  background: var(--purple-200);
+}
+
+/* ==========================================================================
+   HERO CHAT EXTRAS
+   ========================================================================== */
+.event-card {
+  align-self: center;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 7px 11px;
+  font-size: 9.5px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px -3px rgba(44, 4, 48, 0.28);
+}
+
+.event-card small {
+  display: block;
+  font-weight: 500;
+  font-size: 8px;
+  color: var(--text-muted);
+}
+
+.reactbar {
+  align-self: flex-start;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 5px 8px;
+  font-size: 12px;
+  box-shadow: 0 6px 16px -8px rgba(44, 4, 48, 0.5);
+  animation: popIn 0.45s var(--ease) both 0.3s;
+}
+
+.reactbar i {
+  font-style: normal;
+  transition: transform 0.25s var(--ease);
+}
+
+.reactbar i:hover {
+  transform: translateY(-3px) scale(1.2);
+}
+
+.reactbar__more {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--purple-50);
+  color: var(--purple-700);
+  display: grid;
+  place-items: center;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.photo-msg {
+  align-self: flex-start;
+  width: 74%;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(44, 4, 48, 0.16);
+}
+
+.photo-msg .portrait {
+  aspect-ratio: 4 / 3;
+}
+
+.photo-msg__time {
+  position: absolute;
+  right: 6px;
+  bottom: 5px;
+  z-index: 3;
+  font-size: 7.5px;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   STICKER SCREEN
+   ========================================================================== */
+.sticker-stage {
+  flex: 1;
+  position: relative;
+  background: var(--purple-100);
+  overflow: hidden;
+}
+
+.sticker-stage::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    circle at 12px 12px,
+    rgba(155, 16, 163, 0.08) 1.4px,
+    transparent 1.6px
+  );
+  background-size: 48px 48px;
+}
+
+.sticker {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  filter: drop-shadow(0 8px 12px rgba(44, 4, 48, 0.28));
+  animation: floatY 5s ease-in-out infinite;
+}
+
+.sticker--photo {
+  width: 74px;
+  aspect-ratio: 3 / 4;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.tray {
+  flex: none;
+  background: #fff;
+  border-top: 1px solid rgba(44, 4, 48, 0.08);
+  padding: 8px 9px 10px;
+}
+
+.tray__tabs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  padding-bottom: 8px;
+}
+
+.tray__tabs .is-active {
+  color: var(--purple-700);
+}
+
+.tray__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+  align-items: center;
+}
+
+.tray__cell {
+  aspect-ratio: 1;
+  border-radius: 10px;
+  background: var(--purple-50);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.tray__cell:hover {
+  transform: translateY(-3px);
+  background: var(--purple-200);
+}
+
+.tray__cell--action {
+  font-size: 8px;
+  font-weight: 700;
+  color: var(--purple-800);
+  gap: 2px;
+  line-height: 1.1;
+  text-align: center;
+}
+
+/* ==========================================================================
+   PHONE INSIDE A CAROUSEL CARD
+   ========================================================================== */
+.pcard__art--phone {
+  padding: 20px 0 0;
+  align-items: end;
+}
+
+.pcard__art--phone .phone {
+  --w: 172px;
+  border-radius: 22px;
+  padding: 5px;
+  margin-bottom: -22px;
+}
+
+.pcard__art--phone .phone__screen {
+  border-radius: 18px;
+}
+
+/* photo album inside a chat */
+.album {
+  align-self: flex-end;
+  width: 78%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.album .portrait {
+  aspect-ratio: 1;
+}
+
+.album__more {
+  position: relative;
+}
+
+.album__more span {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 8, 24, 0.55);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hd-badge {
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  z-index: 4;
+  background: rgba(20, 8, 24, 0.62);
+  color: #fff;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+.doc-msg {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--purple-200);
+  border-radius: 12px;
+  padding: 8px 10px;
+  max-width: 82%;
+  box-shadow: 0 1px 1px rgba(44, 4, 48, 0.14);
+}
+
+.doc-msg__icon {
+  width: 26px;
+  height: 30px;
+  border-radius: 4px;
+  background: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 13px;
+  flex: none;
+}
+
+.doc-msg b {
+  display: block;
+  font-size: 9px;
+}
+
+.doc-msg small {
+  font-size: 7.5px;
+  color: var(--text-muted);
+}

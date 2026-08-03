@@ -1,0 +1,464 @@
+/* ==========================================================================
+   Status page
+   ========================================================================== */
+
+/* ---------- the story card ---------- */
+.scard {
+  position: relative;
+  width: min(100%, 280px);
+  aspect-ratio: 3 / 4.3;
+  flex: none;
+}
+
+.scard--wide {
+  aspect-ratio: 3 / 3.6;
+}
+
+.scard__frame {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  background: #1a1220;
+}
+
+.scard__frame .portrait {
+  position: absolute;
+  inset: 0;
+}
+
+.scard__bars {
+  position: absolute;
+  inset: 10px 12px auto;
+  z-index: 4;
+  display: flex;
+  gap: 4px;
+}
+
+.scard__bars i {
+  height: 2.5px;
+  flex: 1;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.35);
+  overflow: hidden;
+}
+
+.scard__bars i.is-done {
+  background: #fff;
+}
+
+.scard__bars i.is-active::after {
+  content: '';
+  display: block;
+  height: 100%;
+  background: #fff;
+  animation: storyFill 5s linear infinite;
+}
+
+.scard__head {
+  position: absolute;
+  inset: 22px 12px auto;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+}
+
+.scard__name {
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.15;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+.scard__name small {
+  display: block;
+  font-size: 8.5px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+.scard__caption {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 54px;
+  z-index: 4;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.scard__reply {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 12px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.scard__field {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(20, 10, 24, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.scard__round {
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 10, 24, 0.55);
+  color: #fff;
+  backdrop-filter: blur(4px);
+  transition: transform 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.scard__round:hover {
+  transform: translateY(-2px);
+}
+
+.scard__round--accent {
+  background: var(--purple-500);
+  box-shadow: 0 8px 18px -8px rgba(213, 0, 249, 0.9);
+}
+
+/* voice note laid over the story */
+.scard__voice {
+  position: absolute;
+  left: 10px;
+  right: 44px;
+  bottom: 50px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(20, 10, 24, 0.55);
+  backdrop-filter: blur(6px);
+  color: #fff;
+}
+
+.scard__voice .wave i {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* mention avatars pinned to the top of a story */
+.scard__mentions {
+  position: absolute;
+  left: 50%;
+  top: -18px;
+  translate: -50% 0;
+  z-index: 6;
+  display: flex;
+  gap: 6px;
+}
+
+.scard__mentions .avatar {
+  box-shadow: 0 0 0 2px #fff, 0 6px 14px -6px rgba(44, 4, 48, 0.6);
+  animation: floatY 5s ease-in-out infinite;
+}
+
+/* floating stickers / reactions around the card */
+.scard__float {
+  position: absolute;
+  z-index: 6;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+  filter: drop-shadow(0 8px 14px rgba(44, 4, 48, 0.35));
+  animation: floatY 5.5s ease-in-out infinite;
+}
+
+.scard__float--chip {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 17px;
+}
+
+/* the emoji cluster next to the hero card */
+.emoji-cloud {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+}
+
+/* privacy chooser sheet */
+.privacy {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 8px;
+  z-index: 6;
+  background: #fff;
+  border-radius: 16px;
+  padding: 8px;
+  box-shadow: 0 18px 34px -18px rgba(44, 4, 48, 0.8);
+  display: grid;
+  gap: 3px;
+}
+
+.privacy__row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 9px;
+  border-radius: 11px;
+  font-size: 9.5px;
+  font-weight: 600;
+  transition: background 0.2s var(--ease);
+}
+
+.privacy__row:hover {
+  background: var(--purple-50);
+}
+
+.privacy__row.is-on {
+  background: var(--purple-50);
+}
+
+.privacy__radio {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(44, 4, 48, 0.3);
+  flex: none;
+  display: grid;
+  place-items: center;
+}
+
+.privacy__row.is-on .privacy__radio {
+  border-color: var(--purple-700);
+}
+
+.privacy__row.is-on .privacy__radio::after {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--purple-700);
+}
+
+.privacy__tag {
+  margin-left: auto;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--purple-700);
+  background: var(--purple-200);
+  padding: 3px 7px;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   AVATAR CLOUD (the "go beyond words" band)
+   ========================================================================== */
+.ring-avatar {
+  position: relative;
+  border-radius: 50%;
+  padding: 3.5px;
+  background: conic-gradient(
+    from 210deg,
+    var(--purple-500),
+    var(--purple-700),
+    var(--purple-300),
+    var(--purple-500)
+  );
+  display: inline-grid;
+  place-items: center;
+  animation: floatY 6s ease-in-out infinite;
+}
+
+.ring-avatar > span {
+  box-shadow: 0 0 0 2px var(--cream);
+}
+
+.cloud {
+  position: relative;
+  height: clamp(120px, 16vw, 180px);
+}
+
+.cloud > * {
+  position: absolute;
+}
+
+/* ==========================================================================
+   DARK STATUS CARDS (carousel)
+   ========================================================================== */
+.pcard--dark {
+  background: var(--ink);
+}
+
+.pcard--dark .pcard__body {
+  background: #fff;
+}
+
+.pcard__art--flush {
+  padding: 18px 16px 0;
+  align-items: end;
+}
+
+.gallery {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 -6px 22px -12px rgba(0, 0, 0, 0.5);
+}
+
+.gallery__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  font-size: 8.5px;
+  font-weight: 700;
+  border-bottom: 1px solid rgba(44, 4, 48, 0.08);
+}
+
+.gallery__tabs {
+  margin-left: auto;
+  display: flex;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.gallery__tabs .is-active {
+  color: var(--purple-700);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  padding: 6px;
+}
+
+.gallery__grid .portrait {
+  aspect-ratio: 1;
+  border-radius: 5px;
+}
+
+.editor {
+  width: 100%;
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 4 / 3.1;
+  box-shadow: 0 -6px 22px -12px rgba(0, 0, 0, 0.5);
+}
+
+.editor__tools {
+  position: absolute;
+  inset: 7px 8px auto;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: #fff;
+}
+
+.editor__tools span:first-child {
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   FAQ — card variant
+   ========================================================================== */
+.faq--cards {
+  border-top: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.faq--cards .faq__row {
+  border: 1px solid rgba(44, 4, 48, 0.12);
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.faq--cards .faq__row:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: rgba(155, 16, 163, 0.35);
+}
+
+.faq--cards .faq__head {
+  padding: 16px 16px 16px 20px;
+  gap: 16px;
+}
+
+.faq--cards .faq__head > span:first-child {
+  flex: 1;
+}
+
+.faq--cards .faq__go svg {
+  /* beat the plain-list rule that tints the chevron purple */
+  color: #fff;
+}
+
+.faq--cards .faq__row.is-open .faq__head svg {
+  transform: none;
+}
+
+.faq__go {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--purple-500);
+  color: #fff;
+  transition: transform 0.3s var(--ease);
+}
+
+.faq--cards .faq__row.is-open .faq__go {
+  transform: rotate(90deg);
+}
+
+.faq--cards .faq__panel {
+  padding: 0 20px 20px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 900px) {
+  .cloud {
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  .cloud > * {
+    position: static;
+  }
+}
+
+@media (max-width: 480px) {
+  .scard {
+    width: min(100%, 240px);
+  }
+}
