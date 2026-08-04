@@ -44,6 +44,14 @@ export const IconCheck = (p) => (
   </svg>
 )
 
+export const IconAlert = (p) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="12" r="9" />
+    <path d="M12 7.5v5.5" />
+    <circle cx="12" cy="16.4" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+)
+
 export const IconText = (p) => (
   <svg {...base} {...p}>
     <path d="M5 6.5V5h14v1.5M12 5v14M9 19h6" />

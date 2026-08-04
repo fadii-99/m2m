@@ -10,15 +10,15 @@ import {
   IconVideo,
 } from '../Icons'
 
-/** Group chat screen  used by the "Keep in touch with your groups" section. */
+/** One-to-one chat screen  used by the About page hero. */
 export default function ChatMockup() {
   return (
     <PhoneFrame size="lg" lightStatus className="float-slow">
       <div className="appbar">
-        <Avatar name="Weekend Trip" size={30} />
+        <Avatar name="Ayesha Khan" size={30} />
         <div>
-          <div className="appbar__title">Weekend Trip 🏔️</div>
-          <div className="appbar__sub">Ayesha, Bilal, Hina, +5</div>
+          <div className="appbar__title">Ayesha Khan</div>
+          <div className="appbar__sub">online</div>
         </div>
         <div className="appbar__actions">
           <IconVideo width="15" height="15" />
@@ -30,8 +30,7 @@ export default function ChatMockup() {
         <span className="daydivider">TODAY</span>
 
         <div className="bubble" style={{ animationDelay: '.1s' }}>
-          <span className="bubble__name">Ayesha</span>
-          Guys, are we still leaving at 6am? 😅
+          Are we still leaving at 6am? 😅
           <span className="bubble__time">09:12</span>
         </div>
 
@@ -46,17 +45,14 @@ export default function ChatMockup() {
         <div className="reactions">
           <span>🔥</span>
           <span>😍</span>
-          <span style={{ color: 'var(--text-muted)', fontWeight: 700 }}>6</span>
         </div>
 
         <div className="bubble" style={{ animationDelay: '.5s' }}>
-          <span className="bubble__name">Bilal</span>
           Perfect. I'll bring the speaker 🔊
           <span className="bubble__time">09:16</span>
         </div>
 
         <div className="bubble" style={{ animationDelay: '.7s', paddingBottom: 7 }}>
-          <span className="bubble__name">Hina</span>
           <span className="typing" aria-label="typing">
             <i />
             <i />

@@ -20,7 +20,7 @@ export default function Home() {
         reverse
         title="New! Call on"
         highlight="M2M Web"
-        body="Now you can make and receive video or voice calls  one-on-one or in groups  right from your browser."
+        body="Now you can make and receive video or voice calls right from your browser."
         linkLabel="Try it"
         linkHref={LINKS.web}
         media={<WebMockup />}
@@ -32,7 +32,7 @@ export default function Home() {
         id="calling"
         title="Never miss a moment with voice and"
         highlight="video calls"
-        body="From a group call with classmates to a quick call with family, feel like you're in the same room with free voice and video calls."
+        body="From a quick catch-up with a classmate to a long call with family, feel like you're in the same room with free voice and video calls."
         linkHref={LINKS.calling}
         media={<CallMockup />}
       />

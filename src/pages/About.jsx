@@ -51,7 +51,7 @@ const DISCOVER = [
   },
   {
     title: 'Calling',
-    text: 'Free voice and video calls with no time limits, one-on-one or in groups.',
+    text: 'Free voice and video calls with no time limits, on any of your devices.',
     href: LINKS.calling,
     seed: 6,
   },

@@ -1,11 +1,9 @@
 import Reveal from './Reveal'
 import StoreBadges from './StoreBadges'
 import { LINKS } from '../config/links'
-import { IconGlobe, IconLock, IconSparkle, IconWindows, IconApple } from './Icons'
+import { IconGlobe, IconLock, IconSparkle } from './Icons'
 
 const PLATFORMS = [
-  { label: 'Mac', href: LINKS.mac, Icon: IconApple },
-  { label: 'Windows', href: LINKS.windows, Icon: IconWindows },
   { label: 'M2M Web', href: LINKS.web, Icon: IconGlobe },
 ]
 
@@ -23,7 +21,7 @@ export default function DownloadBand() {
                 on every device.
               </h2>
               <p className="lead">
-                Download M2M on your phone and stay signed in on desktop and the web. Your
+                Download M2M on your phone and open M2M Web in any browser. Your
                 chats sync instantly  and stay end-to-end encrypted everywhere.
               </p>
 
@@ -49,7 +47,7 @@ export default function DownloadBand() {
                 {
                   Icon: IconGlobe,
                   title: 'Works anywhere',
-                  text: 'Reliable on slow connections, across Android, iOS, desktop and web.',
+                  text: 'Reliable on slow connections, on Android, iPhone and the web.',
                 },
                 {
                   Icon: IconSparkle,

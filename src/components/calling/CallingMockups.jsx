@@ -10,7 +10,6 @@ import {
   IconSearch,
   IconSpeaker,
   IconSwitchCamera,
-  IconUserPlus,
   IconVideo,
 } from '../Icons'
 
@@ -39,7 +38,7 @@ function CallBar({ compact = false }) {
   )
 }
 
-/* ---------- 1. hero: 3-up group video call ---------- */
+/* ---------- 1. hero: one-to-one video call ---------- */
 export function HeroCallPhone() {
   return (
     <PhoneFrame size="lg" lightStatus className="float-slow">
@@ -49,19 +48,13 @@ export function HeroCallPhone() {
             <IconExpand width="13" height="13" />
           </span>
           <span className="vcall__chip">
-            <IconUserPlus width="13" height="13" />
+            <IconSwitchCamera width="13" height="13" />
           </span>
         </div>
 
-        <div className="vcall__stage vcall__stage--hero">
+        <div className="vcall__stage" style={{ gridTemplateColumns: '1fr' }}>
           <Portrait seed={2}>
-            <span className="portrait__tag">Ayesha · Bilal</span>
-          </Portrait>
-          <Portrait seed={5}>
-            <span className="portrait__tag">Hina</span>
-          </Portrait>
-          <Portrait seed={9}>
-            <span className="portrait__tag">Zoya</span>
+            <span className="portrait__tag">Ayesha</span>
           </Portrait>
         </div>
 
@@ -142,13 +135,13 @@ export function DevicesTrio() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
+                gridTemplateColumns: 'repeat(2, 1fr)',
                 gap: 4,
                 padding: 6,
                 flex: 1,
               }}
             >
-              {[1, 3, 6, 8, 12, 15].map((s, i) => (
+              {[1, 3].map((s, i) => (
                 <Portrait key={s} seed={s} style={{ borderRadius: 5 }}>
                   {i === 0 && <span className="portrait__tag">You</span>}
                 </Portrait>
@@ -197,43 +190,13 @@ export function DevicesTrio() {
   )
 }
 
-/* ---------- 4. group call grid (3 × 3) ---------- */
-export function GroupGridPhone() {
-  return (
-    <PhoneFrame size="lg" lightStatus className="float-slow">
-      <div className="vcall">
-        <div className="vcall__top">
-          <span className="vcall__chip">
-            <IconExpand width="13" height="13" />
-          </span>
-          <span className="vcall__chip">
-            <IconUserPlus width="13" height="13" />
-          </span>
-        </div>
-
-        <div className="vcall__stage vcall__stage--grid">
-          {['Ayesha', 'Bilal', 'Hina', 'Adil', 'Sana', 'Zoya', 'Rehan', 'Yui', 'Mateo'].map(
-            (n, i) => (
-              <Portrait key={n} seed={i * 3 + 2} size="145cqmin" style={{ borderRadius: 9 }}>
-                <span className="portrait__tag">{n}</span>
-              </Portrait>
-            )
-          )}
-        </div>
-
-        <CallBar compact />
-      </div>
-    </PhoneFrame>
-  )
-}
-
-/* ---------- 5. screen sharing ---------- */
+/* ---------- 4. screen sharing ---------- */
 export function ScreenShareMock() {
   return (
     <div className="share float-slow">
       <div className="share__inner">
         <div className="share__strip">
-          {[2, 5, 8, 11, 14, 17, 20].map((s) => (
+          {[2, 5].map((s) => (
             <Portrait key={s} seed={s} />
           ))}
         </div>
@@ -305,7 +268,7 @@ export function TabletCardArt() {
           <IconSearch width="8" height="8" />
           <span>Search</span>
         </div>
-        {['Ayesha', 'Weekend Trip', 'Mama'].map((n) => (
+        {['Ayesha', 'Adil', 'Mama'].map((n) => (
           <div key={n} className="chatrow" style={{ padding: 4, gap: 5 }}>
             <Avatar name={n} size={16} />
             <span className="chatrow__t">
@@ -316,10 +279,21 @@ export function TabletCardArt() {
           </div>
         ))}
       </div>
-      <div style={{ background: '#170f1c', padding: 5, display: 'grid', gap: 4 }}>
-        {[3, 9].map((s) => (
-          <Portrait key={s} seed={s} style={{ borderRadius: 6 }} />
-        ))}
+      <div style={{ background: '#170f1c', padding: 5, position: 'relative' }}>
+        <Portrait seed={3} style={{ position: 'absolute', inset: 5, borderRadius: 6 }} />
+        <Portrait
+          seed={9}
+          style={{
+            position: 'absolute',
+            right: 9,
+            bottom: 9,
+            width: 26,
+            aspectRatio: '3 / 4',
+            borderRadius: 4,
+            zIndex: 2,
+            border: '1px solid rgba(255,255,255,.4)',
+          }}
+        />
       </div>
     </div>
   )
@@ -348,7 +322,7 @@ export function DesktopCardArt() {
         }}
       >
         <div style={{ borderRight: '1px solid rgba(44,4,48,.08)', padding: 6 }}>
-          {['Adil', 'Design Standup', 'Hina', 'Zoya'].map((n) => (
+          {['Adil', 'Ayesha', 'Hina', 'Zoya'].map((n) => (
             <div key={n} className="chatrow" style={{ padding: 3, gap: 5 }}>
               <Avatar name={n} size={14} />
               <span className="chatrow__t">

@@ -285,6 +285,20 @@
   margin-top: 2px;
 }
 
+.form__sent--error {
+  background: #fef3f2;
+  color: #7a271a;
+}
+
+.form__sent--error svg {
+  color: #d92d20;
+}
+
+.form button[type='submit']:disabled {
+  opacity: 0.65;
+  cursor: progress;
+}
+
 /* ---------- shared page bits ---------- */
 .page-lead {
   font-size: clamp(1.0625rem, 1.5vw, 1.25rem);

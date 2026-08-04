@@ -4,21 +4,23 @@ import SmartLink from '../SmartLink'
 import { LINKS } from '../../config/links'
 import { IconDownload } from '../Icons'
 import { DesktopCardArt, TabletCardArt } from '../calling/CallingMockups'
+import { AlbumPhone } from '../messaging/MessagingMockups'
 
 const CARDS = [
   {
-    title: 'M2M on tablet is here',
-    text: 'Chat and make calls, share your status, and get more done on a bigger screen.',
-    art: <TabletCardArt />,
+    title: 'Android and iPhone',
+    text: 'Download the app on the phone you carry and pick up every chat and call wherever you are.',
+    art: <AlbumPhone />,
+    artClass: 'pcard__art--phone',
   },
   {
-    title: 'Connect on desktop',
-    text: 'Use M2M Web or our desktop apps to chat on your computer, even when your phone is off.',
+    title: 'M2M Web in your browser',
+    text: 'Open M2M Web, scan the code with your phone, and your chats are on the big screen. Nothing to install.',
     art: <DesktopCardArt />,
   },
   {
-    title: 'Pick up where you left off',
-    text: 'Your chats and calls stay in sync across every device linked to your account.',
+    title: 'Everything stays in sync',
+    text: 'A message you send from the browser shows up on your phone straight away, and the other way round.',
     art: <TabletCardArt />,
   },
 ]
@@ -36,7 +38,7 @@ export default function KeepGoing({ body }) {
           </h2>
           <p className="lead">
             {body ||
-              'Stay connected anytime, anywhere on your preferred device by downloading our apps. Messaging and calling are available on iOS, Android, Mac, tablet and Windows devices.'}
+              'Stay connected anytime, anywhere. M2M runs on Android, iPhone and in your browser with M2M Web.'}
           </p>
           <p style={{ marginTop: 26 }}>
             <SmartLink className="btn btn--lg" href={LINKS.download}>
@@ -46,10 +48,10 @@ export default function KeepGoing({ body }) {
         </Reveal>
 
         <Reveal className="split__media" delay={140} style={{ minWidth: 0 }}>
-          <Carousel ariaLabel="M2M on other devices">
+          <Carousel ariaLabel="Where M2M runs">
             {CARDS.map((c) => (
               <article className="pcard" data-card key={c.title}>
-                <div className="pcard__art">{c.art}</div>
+                <div className={`pcard__art${c.artClass ? ` ${c.artClass}` : ''}`}>{c.art}</div>
                 <div className="pcard__body">
                   <h3>{c.title}</h3>
                   <p>{c.text}</p>

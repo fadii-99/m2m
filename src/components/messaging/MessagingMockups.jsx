@@ -2,6 +2,7 @@ import PhoneFrame from '../mockups/PhoneFrame'
 import Portrait from '../Portrait'
 import Avatar from '../Avatar'
 import {
+  IconArchive,
   IconCamera,
   IconCheckDouble,
   IconChat,
@@ -16,7 +17,6 @@ import {
   IconSend,
   IconSticker,
   IconUpdates,
-  IconUsers,
   IconVideo,
 } from '../Icons'
 
@@ -27,10 +27,10 @@ export function HeroChatPhone() {
   return (
     <PhoneFrame size="lg" lightStatus className="float-slow">
       <div className="appbar">
-        <Avatar name="Family" size={30} />
+        <Avatar name="Maya" size={30} />
         <div>
-          <div className="appbar__title">Family ❤️</div>
-          <div className="appbar__sub">Trevor, Mum, Maya, +2</div>
+          <div className="appbar__title">Maya</div>
+          <div className="appbar__sub">online</div>
         </div>
         <div className="appbar__actions">
           <IconVideo width="15" height="15" />
@@ -87,7 +87,7 @@ export function HeroChatPhone() {
         </div>
 
         <div className="bubble bubble--out" style={{ maxWidth: '70%' }}>
-          Can't wait to see you all there
+          Can't wait to see you there
           <span className="bubble__time">
             12:26 <IconCheckDouble width="10" height="10" color="#0aa2c0" />
           </span>
@@ -113,16 +113,16 @@ export function HeroChatPhone() {
    2. organised chat list
    ========================================================================== */
 const ROWS = [
-  { name: 'The best family ❤️', msg: 'Maya: Great meeting!', time: '10:41', badge: '3', pin: true },
+  { name: 'Maya', msg: 'Great meeting!', time: '10:41', badge: '3', pin: true },
   { name: 'Mum', msg: 'Where are you?', time: '10:12', badge: '' },
   { name: 'Moshe', msg: 'Did you get a chance to look at…', time: '09:58', badge: '1' },
   { name: 'Ayesha Khan', msg: 'Voice message · 0:14', time: 'Yesterday', badge: '' },
-  { name: 'Design Standup', msg: 'You: shared 3 photos', time: 'Yesterday', badge: '' },
+  { name: 'Sana', msg: 'You: shared 3 photos', time: 'Yesterday', badge: '' },
   { name: 'Bilal', msg: 'Sending the file now', time: 'Tuesday', badge: '' },
-  { name: 'Weekend Trip 🏔️', msg: 'Hina: booked the rooms!', time: 'Tuesday', badge: '' },
+  { name: 'Hina', msg: 'Booked the rooms!', time: 'Tuesday', badge: '' },
   { name: 'Zoya', msg: 'Photo', time: 'Monday', badge: '' },
   { name: 'Rehan Ali', msg: 'Thanks! 🙏', time: 'Monday', badge: '' },
-  { name: 'Neighbours', msg: '~Yui: See you all Saturday', time: '12/07', badge: '' },
+  { name: 'Yui', msg: 'See you Saturday', time: '12/07', badge: '' },
 ]
 
 export function ChatListPhone() {
@@ -177,7 +177,7 @@ export function ChatListPhone() {
           {[
             { label: 'Chats', Icon: IconChat, active: true },
             { label: 'Updates', Icon: IconUpdates },
-            { label: 'Groups', Icon: IconUsers },
+            { label: 'Archived', Icon: IconArchive },
             { label: 'Calls', Icon: IconPhone },
           ].map(({ label, Icon, active }) => (
             <span key={label} className={`tabbar__item${active ? ' is-active' : ''}`}>

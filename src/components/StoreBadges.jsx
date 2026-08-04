@@ -1,5 +1,5 @@
 import { LINKS } from '../config/links'
-import { IconApple, IconGooglePlay, IconWindows } from './Icons'
+import { IconApple, IconGooglePlay } from './Icons'
 
 /**
  * App-store badges, laid out the way the official ones are: mark on the left,
@@ -39,42 +39,6 @@ export function AppStoreBadge({ variant = 'solid' }) {
       <span className="store__text">
         <small>Download on the</small>
         <strong>App Store</strong>
-      </span>
-    </a>
-  )
-}
-
-export function MsStoreBadge({ variant = 'solid' }) {
-  return (
-    <a
-      className={`store store--${variant}`}
-      href={LINKS.windows}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Get M2M from the Microsoft Store"
-    >
-      <IconWindows width="21" height="21" />
-      <span className="store__text">
-        <small>Download from the</small>
-        <strong>Microsoft Store</strong>
-      </span>
-    </a>
-  )
-}
-
-export function MacBadge({ variant = 'solid' }) {
-  return (
-    <a
-      className={`store store--${variant}`}
-      href={LINKS.mac}
-      target="_blank"
-      rel="noreferrer"
-      aria-label="Download M2M for macOS"
-    >
-      <IconApple width="23" height="23" />
-      <span className="store__text">
-        <small>Download for</small>
-        <strong>macOS</strong>
       </span>
     </a>
   )

@@ -19,7 +19,7 @@ import {
 const ORGANIZE_ITEMS = [
   {
     title: 'Inbox filters',
-    body: 'Stay organized and find your most important conversations with filters for All, Unread, and Group chats.',
+    body: 'Stay organized and find your most important conversations with filters for All, Unread and Archived.',
     ctaLabel: 'Learn how',
     href: LINKS.helpCenter,
   },
@@ -85,14 +85,14 @@ const DISCOVER = [
   },
   {
     title: 'Calling',
-    text: 'Free voice and video calls with no time limits, one-on-one or in groups.',
+    text: 'Free voice and video calls with no time limits, on any of your devices.',
     href: LINKS.calling,
     seed: 3,
   },
   {
-    title: 'Groups',
-    text: 'Keep everyone in the loop with group chats of up to 1024 people.',
-    href: LINKS.groups,
+    title: 'Status',
+    text: 'Post photos, videos and voice updates that disappear after 24 hours.',
+    href: LINKS.status,
     seed: 6,
   },
 ]
@@ -100,7 +100,7 @@ const DISCOVER = [
 const FAQS = [
   {
     q: 'How do I use inbox filters?',
-    a: 'At the top of the Chats tab, tap All, Unread or Groups to narrow the list down to just those conversations. The filter resets the next time you open M2M.',
+    a: 'At the top of the Chats tab, tap All, Unread or Archived to narrow the list down to just those conversations. The filter resets the next time you open M2M.',
   },
   {
     q: 'How do I pin a message?',
@@ -136,7 +136,7 @@ const FAQS = [
   },
   {
     q: 'How can I manage my media?',
-    a: 'Open a chat, go to the contact or group info screen, and tap Media, links and docs to review or delete everything shared in that chat.',
+    a: 'Open a chat, go to the contact info screen, and tap Media, links and docs to review or delete everything shared in that chat.',
   },
   {
     q: 'How can I manage my storage?',

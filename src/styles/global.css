@@ -698,7 +698,7 @@ p {
   font-weight: 500;
 }
 
-.chip--group {
+.chip--call {
   padding: 12px 14px;
   border-radius: var(--radius);
   flex-direction: column;
@@ -1235,7 +1235,7 @@ p {
     white-space: normal;
   }
 
-  .chip--group {
+  .chip--call {
     max-width: 220px;
   }
 

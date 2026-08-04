@@ -2,7 +2,9 @@ import { useState } from 'react'
 import Reveal from '../components/Reveal'
 import SmartLink from '../components/SmartLink'
 import { LINKS } from '../config/links'
+import { API, postJson } from '../config/api'
 import {
+  IconAlert,
   IconArrowUpRight,
   IconBriefcase,
   IconCheck,
@@ -16,7 +18,7 @@ const CHANNELS = [
   {
     Icon: IconHelp,
     title: 'Help Center',
-    body: 'Step-by-step answers for the things people ask most  setup, backups, groups and privacy settings.',
+    body: 'Step-by-step answers for the things people ask most  setup, backups, chats and privacy settings.',
     action: 'Browse the Help Center',
     href: LINKS.helpCenter,
     external: true,
@@ -64,15 +66,19 @@ export default function Contact() {
   const [form, setForm] = useState(EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [failure, setFailure] = useState('')
 
   const set = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }))
     setErrors((v) => ({ ...v, [key]: undefined }))
     setSent(false)
+    setFailure('')
   }
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault()
+    if (sending) return
 
     const next = {}
     if (!form.name.trim()) next.name = 'Tell us your name'
@@ -81,19 +87,47 @@ export default function Contact() {
     if (form.message.trim().length < 10) next.message = 'Add a few more details (10+ characters)'
 
     setErrors(next)
+    setFailure('')
     if (Object.keys(next).length) return
 
-    // Frontend-only site: hand the message to the visitor's mail client rather
-    // than pretending it was submitted to a server that does not exist.
-    const to = EMAIL_FOR_TOPIC[form.topic] || LINKS.supportEmail
-    const subject = `[${form.topic}] from ${form.name.trim()}`
-    const body = `${form.message.trim()}\n\n\n${form.name.trim()}\n${form.email.trim()}`
+    setSending(true)
+    setSent(false)
 
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(
-      subject
-    )}&body=${encodeURIComponent(body)}`
+    let result
+    try {
+      result = await postJson(API.contact, {
+        name: form.name.trim(),
+        email: form.email.trim(),
+        topic: form.topic,
+        message: form.message.trim(),
+      })
+    } catch {
+      // Offline, DNS failure, blocked request — fetch rejects before any status.
+      result = { ok: false, message: 'Could not reach our servers. Check your connection.' }
+    }
 
-    setSent(true)
+    setSending(false)
+
+    if (result.ok) {
+      setForm({ ...EMPTY, topic: form.topic })
+      setSent(true)
+      return
+    }
+
+    // The backend re-runs the same validation, so surface its per-field replies
+    // against the matching inputs instead of a generic banner.
+    if (result.fieldErrors) {
+      const fromServer = {}
+      for (const [field, messages] of Object.entries(result.fieldErrors)) {
+        if (field in EMPTY) fromServer[field] = [].concat(messages)[0]
+      }
+      if (Object.keys(fromServer).length) {
+        setErrors(fromServer)
+        return
+      }
+    }
+
+    setFailure(result.message)
   }
 
   return (
@@ -210,20 +244,38 @@ export default function Contact() {
                 {errors.message && <span className="field__error">{errors.message}</span>}
               </div>
 
-              <button className="btn btn--lg" type="submit" style={{ width: '100%', justifyContent: 'center' }}>
-                Send message
+              <button
+                className="btn btn--lg"
+                type="submit"
+                disabled={sending}
+                style={{ width: '100%', justifyContent: 'center' }}
+              >
+                {sending ? 'Sending…' : 'Send message'}
               </button>
 
               <p className="form__note">
-                This opens the message in your own email app  nothing is sent from this page.
+                We usually reply within two working days. Read the{' '}
+                <SmartLink className="link" href={LINKS.privacy}>
+                  privacy page
+                </SmartLink>{' '}
+                to see how we handle what you send us.
               </p>
 
               {sent && (
                 <div className="form__sent" role="status">
                   <IconCheck width="17" height="17" />
                   <span>
-                    Your email app should have opened with the message ready to go. If nothing
-                    happened, write to{' '}
+                    Thanks  your message is with us and we will get back to you at the email
+                    address you gave.
+                  </span>
+                </div>
+              )}
+
+              {failure && (
+                <div className="form__sent form__sent--error" role="alert">
+                  <IconAlert width="17" height="17" />
+                  <span>
+                    {failure} You can also email{' '}
                     <a
                       className="link"
                       href={`mailto:${EMAIL_FOR_TOPIC[form.topic] || LINKS.supportEmail}`}

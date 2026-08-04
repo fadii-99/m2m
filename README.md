@@ -25,7 +25,7 @@ Routing is `react-router-dom` (`src/App.jsx`).
 | `/about` | `src/pages/About.jsx` | done |
 | `/privacy` | `src/pages/Privacy.jsx` | done  **placeholder legal copy, needs review** |
 | `/contact` | `src/pages/Contact.jsx` | done |
-| `/groups`, `/business`, … |  | not built yet |
+| `/business`, `/security`, … |  | not built yet |
 
 Unknown routes redirect to `/`. When a new page lands, add its path to the
 `INTERNAL` set in `src/config/links.js` so links to it become client-side

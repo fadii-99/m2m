@@ -6,7 +6,7 @@ import { LINKS } from '../config/links'
 import { IconCheckDouble, IconDownload, IconVideo } from './Icons'
 
 const CHIPS = [
-  { top: '6%', right: '4%', delay: '0s', name: 'Study Group', kind: 'group' },
+  { top: '6%', right: '4%', delay: '0s', name: 'Sana', kind: 'call' },
   { top: '34%', left: '2%', delay: '1.1s', name: 'Hina', text: 'Ready when you are 🙌' },
   { top: '62%', right: '10%', delay: '2s', name: 'Ayesha', text: 'Still on for studying?' },
 ]
@@ -67,23 +67,23 @@ export default function Hero() {
 
           <div className="hero__cards" aria-hidden="true">
             {CHIPS.map((c, i) =>
-              c.kind === 'group' ? (
+              c.kind === 'call' ? (
                 <Reveal
                   key={i}
-                  className="chip chip--group"
+                  className="chip chip--call"
                   delay={200 + i * 140}
                   style={{ top: c.top, right: c.right, left: c.left, animationDelay: c.delay }}
                 >
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <Avatar name={c.name} size={26} />
                     <span>
-                      Study Group
-                      <span className="chip__meta">6 on the call</span>
+                      {c.name}
+                      <span className="chip__meta">Video call · ringing</span>
                     </span>
                     <IconVideo width="15" height="15" style={{ marginLeft: 'auto', color: 'var(--purple-700)' }} />
                   </div>
                   <span className="chip__join">
-                    <span className="pulse-dot" /> Join
+                    <span className="pulse-dot" /> Answer
                   </span>
                 </Reveal>
               ) : (

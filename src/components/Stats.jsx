@@ -2,8 +2,8 @@ import Reveal from './Reveal'
 
 const STATS = [
   { value: '180+', label: 'Countries where M2M works' },
-  { value: '1024', label: 'People in a single group' },
-  { value: '32', label: 'Participants on one video call' },
+  { value: '2 GB', label: 'Largest file you can send' },
+  { value: '0', label: 'Time limits on your calls' },
   { value: '100%', label: 'Messages end-to-end encrypted' },
 ]
 

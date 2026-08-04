@@ -98,7 +98,7 @@ export default function Privacy() {
             <p>This applies to everything you send through a chat:</p>
             <ul>
               <li>Text messages, photos, videos, documents and voice notes</li>
-              <li>Voice and video calls, one-on-one and in groups</li>
+              <li>Voice and video calls</li>
               <li>Status updates and the replies people send to them</li>
               <li>Your profile photo and about text</li>
             </ul>

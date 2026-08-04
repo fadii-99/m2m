@@ -19,7 +19,6 @@ export const LINKS = {
   privacy: '/privacy',
   contact: '/contact',
   download: '/download',
-  groups: '/groups',
   business: '/business',
   security: '/security',
 
@@ -50,7 +49,7 @@ export const LINKS = {
 
 /**
  * Routes that are actually built (rendered with <Link> instead of <a>).
- * Add each new page here as it lands  /messaging, /status, /groups, …
+ * Add each new page here as it lands  /messaging, /status, /security, …
  */
 export const INTERNAL = new Set([
   LINKS.home,

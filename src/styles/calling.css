@@ -143,18 +143,6 @@
   overflow: hidden;
 }
 
-.vcall__stage--hero {
-  grid-template-rows: 1.45fr 1fr;
-}
-
-.vcall__stage--hero > :nth-child(1) {
-  grid-column: 1 / -1;
-}
-
-.vcall__stage--grid {
-  grid-template-columns: repeat(3, 1fr);
-}
-
 .vcall__self {
   position: absolute;
   right: 10px;

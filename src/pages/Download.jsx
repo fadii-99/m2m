@@ -4,12 +4,7 @@ import Carousel from '../components/Carousel'
 import Portrait from '../components/Portrait'
 import SmartLink from '../components/SmartLink'
 import DownloadArt from '../components/apps/DownloadArt'
-import {
-  AppStoreBadge,
-  MacBadge,
-  MsStoreBadge,
-  PlayBadge,
-} from '../components/StoreBadges'
+import { AppStoreBadge, PlayBadge } from '../components/StoreBadges'
 import { LINKS } from '../config/links'
 import { IconArrowRight, IconChevronRight, IconGlobe } from '../components/Icons'
 
@@ -33,31 +28,9 @@ const DEVICES = {
   ios: {
     kind: 'Mobile',
     name: 'iPhone',
-    body: 'Message and call privately from your iPhone, with your chats backed up and end-to-end encrypted.',
+    body: 'Message and call privately from your iPhone or iPad, with your chats backed up and end-to-end encrypted.',
     req: 'Minimum requirements: iOS 15.1 or newer',
     badge: <AppStoreBadge />,
-  },
-  ipad: {
-    kind: 'Tablet',
-    name: 'iPadOS',
-    isNew: true,
-    body: 'All the features you love: chats, calling, status, screen sharing, and more, with a bigger screen using the M2M iPad app.',
-    req: 'Minimum requirements: iPadOS 15.1 or newer',
-    badge: <AppStoreBadge />,
-  },
-  mac: {
-    kind: 'Desktop',
-    name: 'Mac',
-    body: 'A native app for macOS with faster search, screen sharing and calls that stay put on your desktop.',
-    req: 'Minimum requirements: macOS 11 or newer',
-    badge: <MacBadge />,
-  },
-  windows: {
-    kind: 'Desktop',
-    name: 'Windows',
-    body: 'Get calling, screen sharing and a faster experience with the Windows app. Requires Windows 10 64-bit or newer.',
-    req: 'Minimum requirements: Windows 10 (64-bit) 1903 or newer',
-    badge: <MsStoreBadge />,
   },
   web: {
     kind: 'Browser',
@@ -67,7 +40,7 @@ const DEVICES = {
   },
 }
 
-const ORDER = ['android', 'ios', 'ipad', 'mac', 'windows', 'web']
+const ORDER = ['android', 'ios', 'web']
 
 /** Best guess at what the visitor is holding, so the hero shows their store. */
 function detectDevice() {
@@ -75,11 +48,9 @@ function detectDevice() {
   const ua = navigator.userAgent || ''
 
   if (/android/i.test(ua)) return 'android'
-  if (/iPad/.test(ua)) return 'ipad'
-  if (/iPhone|iPod/.test(ua)) return 'ios'
-  // iPadOS 13+ reports itself as a Mac, so touch points break the tie.
-  if (/Macintosh/.test(ua)) return navigator.maxTouchPoints > 1 ? 'ipad' : 'mac'
-  if (/Windows/.test(ua)) return 'windows'
+  if (/iPhone|iPad|iPod/.test(ua)) return 'ios'
+  // Anything else (desktop, tablet, unknown) gets M2M Web, which is the only
+  // other place M2M runs.
   return 'web'
 }
 
@@ -92,7 +63,7 @@ const ALREADY = [
   },
   {
     title: 'Calling',
-    text: 'Free voice and video calls with no time limits, one-on-one or in groups.',
+    text: 'Free voice and video calls with no time limits, on any of your devices.',
     href: LINKS.calling,
     seed: 3,
   },
