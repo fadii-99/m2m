@@ -2,9 +2,9 @@ import Reveal from './Reveal'
 
 const STATS = [
   { value: '180+', label: 'Countries where M2M works' },
-  { value: '2 GB', label: 'Largest file you can send' },
+  { value: '50 MB', label: 'Largest file you can send' },
   { value: '0', label: 'Time limits on your calls' },
-  { value: '100%', label: 'Messages end-to-end encrypted' },
+  { value: '24h', label: 'Before a status disappears' },
 ]
 
 export default function Stats() {

@@ -35,7 +35,7 @@ export default function CallMockup() {
                 display: 'inline-block',
               }}
             />
-            End-to-end encrypted · {timer}
+            Secure call · {timer}
           </div>
         </div>
 

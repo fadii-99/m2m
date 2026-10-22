@@ -27,12 +27,17 @@ const COLUMNS = [
     title: 'Who we are',
     links: [
       { label: 'About us', href: LINKS.about },
-      { label: 'Privacy', href: LINKS.privacy },
+      { label: 'Privacy Policy', href: LINKS.privacy },
+      { label: 'Terms of Service', href: LINKS.terms },
+      { label: 'Community Guidelines', href: LINKS.communityGuidelines },
     ],
   },
   {
     title: 'Need help?',
-    links: [{ label: 'Contact Us', href: LINKS.contact }],
+    links: [
+      { label: 'Contact Us', href: LINKS.contact },
+      { label: 'Delete your account', href: LINKS.deleteAccount },
+    ],
   },
 ]
 
@@ -81,7 +86,9 @@ export default function Footer() {
         <div className="footer__bottom">
           <span>© {new Date().getFullYear()} M2M</span>
           <span className="footer__legal">
-            <SmartLink href={LINKS.privacy}>Terms &amp; Privacy Policy</SmartLink>
+            <SmartLink href={LINKS.terms}>Terms</SmartLink>
+            {' · '}
+            <SmartLink href={LINKS.privacy}>Privacy Policy</SmartLink>
           </span>
 
           <div className="socials">

@@ -12,7 +12,7 @@ function scramble(revealed) {
     .join('')
 }
 
-/** Dark, "Speak freely" end-to-end encryption screen. */
+/** Dark, "Speak freely" privacy screen. */
 export default function EncryptedMockup() {
   const [revealed, setRevealed] = useState(0)
 
@@ -50,7 +50,7 @@ export default function EncryptedMockup() {
 
       <div className="chat chat--dark">
         <span className="lockbar">
-          <IconLock width="9" height="9" /> Messages are end-to-end encrypted
+          <IconLock width="9" height="9" /> Encrypted connection · No ads
         </span>
 
         <div className="bubble">

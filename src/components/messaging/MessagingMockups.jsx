@@ -341,7 +341,7 @@ export function FilePhone() {
         </span>
       </div>
       <span className="bubble bubble--out" style={{ fontSize: 9, maxWidth: '60%' }}>
-        Up to 2 GB per file
+        Up to 50 MB per file
         <span className="bubble__time">
           09:33 <IconCheckDouble width="9" height="9" color="#0aa2c0" />
         </span>

@@ -28,7 +28,7 @@ const DEVICES = {
   ios: {
     kind: 'Mobile',
     name: 'iPhone',
-    body: 'Message and call privately from your iPhone or iPad, with your chats backed up and end-to-end encrypted.',
+    body: 'Message and call privately from your iPhone or iPad, with your chats synced over encrypted connections.',
     req: 'Minimum requirements: iOS 15.1 or newer',
     badge: <AppStoreBadge />,
   },

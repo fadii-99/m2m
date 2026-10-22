@@ -71,7 +71,7 @@ const SHARE_CARDS = [
   },
   {
     title: 'Share large files',
-    text: 'Send documents, audio and archives up to 2 GB directly inside your chats.',
+    text: 'Send documents, audio and archives up to 50 MB directly inside your chats.',
     art: <FilePhone />,
   },
 ]
@@ -79,8 +79,8 @@ const SHARE_CARDS = [
 const DISCOVER = [
   {
     title: 'Privacy',
-    text: 'Your personal messages stay between you and the people you send them to.',
-    href: LINKS.security,
+    text: 'See what M2M stores, why it needs it, and the controls you have.',
+    href: LINKS.privacy,
     seed: 1,
   },
   {
@@ -120,7 +120,7 @@ const FAQS = [
   },
   {
     q: 'How do I send large files?',
-    a: 'Tap the attachment icon and choose Document. M2M supports files up to 2 GB  the file is encrypted before it leaves your device.',
+    a: 'Tap the attachment icon and choose Document. M2M supports files up to 50 MB, sent over an encrypted connection.',
   },
   {
     q: 'How do I send voice notes?',
@@ -157,9 +157,9 @@ export default function Messaging() {
               way
             </h1>
             <p className="lead">
-              On M2M, conversations can be expressive, fun and entirely you. Messaging on any
-              device is protected by end-to-end encryption, so you can speak freely and know
-              your personal messages remain private and secured.
+              On M2M, conversations can be expressive, fun and entirely you. Your messages
+              travel over encrypted connections and sync between your phone and the web, with
+              no ads in your chats.
             </p>
             <p style={{ marginTop: 28 }}>
               <SmartLink className="btn btn--lg" href={LINKS.download}>

@@ -22,7 +22,7 @@ export default function DownloadBand() {
               </h2>
               <p className="lead">
                 Download M2M on your phone and open M2M Web in any browser. Your
-                chats sync instantly  and stay end-to-end encrypted everywhere.
+                chats sync instantly over encrypted connections.
               </p>
 
               <StoreBadges className="band__stores" />
@@ -41,8 +41,8 @@ export default function DownloadBand() {
               {[
                 {
                   Icon: IconLock,
-                  title: 'End-to-end encrypted',
-                  text: 'Messages, calls and status updates are locked by default.',
+                  title: 'Private by design',
+                  text: 'Encrypted connections, no ads, and you choose who sees your status.',
                 },
                 {
                   Icon: IconGlobe,

@@ -17,7 +17,7 @@ const VALUES = [
   {
     Icon: IconLock,
     title: 'Private by default',
-    body: 'End-to-end encryption is not a setting you have to find  every message, call and status update is locked from the moment you send it.',
+    body: 'No ads and no tracking SDKs. Messages and calls travel over encrypted connections, calls are never recorded, and you choose who sees your status.',
   },
   {
     Icon: IconSparkle,
@@ -107,9 +107,8 @@ export default function About() {
               after a day  and tries to do each one properly, on any phone, on any network.
             </p>
             <p>
-              Everything you send is end-to-end encrypted, which means it is scrambled on your
-              device and can only be unscrambled on the device of the person you sent it to.
-              Not by anyone in between, and not by us.
+              Everything you send travels over encrypted connections, there are no ads or
+              trackers, and our privacy policy spells out exactly what we store and why.
             </p>
           </Reveal>
         </div>

@@ -11,8 +11,21 @@ import Messaging from './pages/Messaging'
 import Status from './pages/Status'
 import About from './pages/About'
 import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
+import DeleteAccount from './pages/DeleteAccount'
+import CommunityGuidelines from './pages/CommunityGuidelines'
 import Contact from './pages/Contact'
 import Download from './pages/Download'
+
+const ALIASES = {
+  '/privacy-policy': '/privacy',
+  '/terms-and-conditions': '/terms',
+  '/terms-of-service': '/terms',
+  '/tos': '/terms',
+  '/account-deletion': '/delete-account',
+  '/delete': '/delete-account',
+  '/guidelines': '/community-guidelines',
+}
 
 /** Jump to the top whenever the route changes (but keep #anchor jumps). */
 function ScrollToTop() {
@@ -38,8 +51,15 @@ export default function App() {
         <Route path="/status" element={<Status />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/delete-account" element={<DeleteAccount />} />
+        <Route path="/community-guidelines" element={<CommunityGuidelines />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/download" element={<Download />} />
+        {/* Common spellings of the legal URLs, so links typed from memory still land. */}
+        {Object.entries(ALIASES).map(([from, to]) => (
+          <Route key={from} path={from} element={<Navigate to={to} replace />} />
+        ))}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Footer />

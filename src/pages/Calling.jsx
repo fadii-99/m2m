@@ -24,7 +24,7 @@ const DEVICE_ITEMS = [
   },
   {
     title: 'Keep things private',
-    body: 'Every voice and video call on M2M is end-to-end encrypted, so nobody outside the call can listen in  not even M2M.',
+    body: 'Voice and video calls on M2M are encrypted in transit, and we never record or store what is said or shown.',
   },
   {
     title: 'Add video effects',
@@ -106,8 +106,8 @@ export default function Calling() {
               <br />a call away
             </h1>
             <p className="lead">
-              M2M video and voice calls are free*, have no time limits, and are end-to-end
-              encrypted. You can call the people who matter across iOS, Android and web,
+              M2M video and voice calls are free*, have no time limits, and are never
+              recorded. You can call the people who matter across iOS, Android and web,
               from your phone or your web browser, internationally.
             </p>
             <p style={{ marginTop: 28 }}>
@@ -139,7 +139,7 @@ export default function Calling() {
             </h2>
             <p className="lead">
               Catch up on voice or video calls with those who matter most. Your calls on M2M
-              are always end-to-end encrypted.
+              are encrypted in transit and never recorded.
             </p>
             <p style={{ marginTop: 26 }}>
               <SmartLink className="btn btn--lg" href={LINKS.download}>

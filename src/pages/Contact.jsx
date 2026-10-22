@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import Reveal from '../components/Reveal'
 import SmartLink from '../components/SmartLink'
 import { LINKS } from '../config/links'
@@ -9,19 +10,17 @@ import {
   IconBriefcase,
   IconCheck,
   IconChevronRight,
-  IconHelp,
   IconMail,
   IconShield,
 } from '../components/Icons'
 
 const CHANNELS = [
   {
-    Icon: IconHelp,
-    title: 'Help Center',
-    body: 'Step-by-step answers for the things people ask most  setup, backups, chats and privacy settings.',
-    action: 'Browse the Help Center',
-    href: LINKS.helpCenter,
-    external: true,
+    Icon: IconAlert,
+    title: 'Delete your account',
+    body: 'Remove your M2M account and its data — in the app, or by sending us a request if you no longer have it.',
+    action: 'How to delete your account',
+    href: LINKS.deleteAccount,
   },
   {
     Icon: IconMail,
@@ -63,11 +62,24 @@ const EMAIL_FOR_TOPIC = {
 const EMPTY = { name: '', email: '', topic: TOPICS[0], message: '' }
 
 export default function Contact() {
-  const [form, setForm] = useState(EMPTY)
+  // /contact?topic=… (e.g. from the account deletion page) preselects the topic
+  // and jumps straight to the form.
+  const [params] = useSearchParams()
+  const linkedTopic = TOPICS.includes(params.get('topic')) ? params.get('topic') : null
+
+  const [form, setForm] = useState(linkedTopic ? { ...EMPTY, topic: linkedTopic } : EMPTY)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
   const [sending, setSending] = useState(false)
   const [failure, setFailure] = useState('')
+
+  useEffect(() => {
+    if (!linkedTopic) return
+    const id = requestAnimationFrame(() =>
+      document.getElementById('message')?.scrollIntoView({ block: 'start' })
+    )
+    return () => cancelAnimationFrame(id)
+  }, [linkedTopic])
 
   const set = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }))
@@ -142,7 +154,7 @@ export default function Contact() {
             </h1>
             <p className="page-lead">
               Whether something is broken, you have a question about privacy, or you want to
-              work with us  here is how to reach the right people.
+              work with us — here is how to reach the right people.
             </p>
           </Reveal>
         </div>
@@ -179,13 +191,13 @@ export default function Contact() {
       </section>
 
       {/* ---------- form ---------- */}
-      <section className="section-tight tint">
+      <section id="message" className="section-tight tint">
         <div className="container split split--rail">
           <Reveal className="split__copy">
             <h2 className="h2">Send us a message</h2>
             <p className="lead">
               Fill this in and we will route it to the right team. The more detail you can give
-              us  your device, what you were doing, what happened  the faster we can help.
+              us — your device, what you were doing, what happened — the faster we can help.
             </p>
             <p className="lead" style={{ marginTop: 16 }}>
               Looking for how M2M handles your data?{' '}
@@ -265,7 +277,7 @@ export default function Contact() {
                 <div className="form__sent" role="status">
                   <IconCheck width="17" height="17" />
                   <span>
-                    Thanks  your message is with us and we will get back to you at the email
+                    Thanks — your message is with us and we will get back to you at the email
                     address you gave.
                   </span>
                 </div>

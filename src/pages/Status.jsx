@@ -47,8 +47,8 @@ const MOMENT_CARDS = [
 const DISCOVER = [
   {
     title: 'Privacy',
-    text: 'Your personal messages stay between you and the people you send them to.',
-    href: LINKS.security,
+    text: 'See what M2M stores, why it needs it, and the controls you have.',
+    href: LINKS.privacy,
     seed: 1,
   },
   {
